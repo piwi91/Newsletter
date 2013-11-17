@@ -1,0 +1,57 @@
+piwicms_newsletter_redirect_url:
+    pattern: /newsletter/redirect/{url}/{mailingId}/{trackingId}
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Statistics:redirect" }
+
+piwicms_newsletter_tracking_image:
+    pattern: /newsletter/track/{mailingId}/{trackingId}
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Statistics:trackingImage" }
+
+piwicms_client_core:
+    resource: "@PiwicmsClientCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+piwicms_client_newsletter:
+    resource: "@PiwicmsClientNewsletterBundle/Resources/config/routing.yml"
+    prefix:   /newsletter
+
+piwicms_system_core:
+    resource: "@PiwicmsSystemCoreBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+piwicms_admin_view:
+    resource: "@PiwicmsAdminViewBundle/Resources/config/routing.yml"
+    prefix:   /admin/views
+
+piwicms_admin_privatemessage:
+    resource: "@PiwicmsAdminPrivateMessageBundle/Resources/config/routing.yml"
+    prefix:   /admin/pm
+
+piwicms_admin_task:
+    resource: "@PiwicmsAdminTaskBundle/Resources/config/routing.yml"
+    prefix:   /admin/task
+
+piwicms_admin_fileexplorer:
+    resource: "@PiwicmsAdminFileExplorerBundle/Resources/config/routing.yml"
+    prefix:   /admin/fileexplorer
+
+piwicms_admin_newsletter:
+    resource: "@PiwicmsAdminNewsletterBundle/Resources/config/routing.yml"
+    prefix:   /admin/
+
+piwicms_system_user:
+    resource: "@PiwicmsSystemUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+YZSupervisorBundle:
+    resource: "@YZSupervisorBundle/Resources/config/routing.xml"
+    prefix: /admin/supervisor
+
+piwicms_admin_test:
+    resource: "@PiwicmsAdminTestBundle/Resources/config/routing.yml"
+    prefix:   /test
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"

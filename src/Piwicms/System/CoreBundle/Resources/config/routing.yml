@@ -1,0 +1,7 @@
+piwicms_system_settings_edit:
+    pattern:  /system/settings
+    defaults: { _controller: PiwicmsSystemCoreBundle:SystemSettings:edit }
+
+test:
+    pattern:  /test
+    defaults: { _controller: PiwicmsSystemCoreBundle:Test:index }

@@ -1,0 +1,75 @@
+{% from '::flash.html.twig' import session_flash %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <title>Widdershoven B.V. - {% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
+        {% stylesheets
+        output="css/style.css"
+        filter="less,cssrewrite"
+        '../app/Resources/public/less/style.less'
+        %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+
+        <style>
+            .newsletter {
+                background: #eee;
+                padding: 25px;
+                margin-top: 25px;
+                border-radius:15px;
+            }
+        </style>
+    {% endblock %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+{#{% if app.user %}#}
+    {#{% include '::menu.html.twig' %}#}
+{#{% endif %}#}
+
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3 newsletter">
+        {% block flashes %}
+            {% if app.session.flashbag.peekAll|length > 0 %}
+                <div class="row">
+                    <div id="flash" class="col-lg-12">
+                        {{ session_flash() }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock flashes %}
+        <div class="row">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    {% javascripts '@bootstrap_js' combine=true
+    '@PiwicmsSystemCoreBundle/Resources/public/js/ajax.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    {#{{ elfinder_tinymce_init4() }}#}
+    {#{{ tinymce_init() }}#}
+{% endblock %}
+
+</body>
+</html>

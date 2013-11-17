@@ -1,0 +1,40 @@
+piwicms_admin_task_index:
+    pattern:  /
+    defaults: { _controller: "PiwicmsAdminTaskBundle:Task:index" }
+
+piwicms_admin_task_indexDatatable:
+    pattern:  /indexDatatable.{_format}
+    defaults: { _controller: "PiwicmsAdminTaskBundle:Task:indexDatatable" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true
+
+piwicms_admin_task_ajaxshow:
+    pattern:  /{id}/ajax/show
+    defaults: { _controller: "PiwicmsAdminTaskBundle:Task:ajaxShow" }
+    options:
+        expose: true
+
+piwicms_admin_task_ajaxdelete:
+    pattern:  /{id}/ajax/delete
+    defaults: { _controller: "PiwicmsAdminTaskBundle:Task:ajaxDelete" }
+    options:
+        expose: true
+
+piwicms_admin_task_show:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PiwicmsAdminTaskBundle:Task:show" }
+    options:
+        expose: true
+
+piwicms_admin_task_new:
+    pattern:  /new
+    defaults: { _controller: "PiwicmsAdminTaskBundle:Task:new" }
+
+piwicms_admin_task_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PiwicmsAdminTaskBundle:Task:delete" }
+    options:
+        expose: true

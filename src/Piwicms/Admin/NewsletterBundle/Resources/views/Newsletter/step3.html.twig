@@ -1,0 +1,48 @@
+{% extends "PiwicmsAdminNewsletterBundle::layout.html.twig" %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/NewsletterBundle/Resources/public/js/Newsletter/step3.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).newsletterStep3();
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6" id="newsletter">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.step3.title'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <form action="{{ path('piwicms_admin_newsletter_submit') }}" {{ form_enctype(form) }} method="POST" id="newsletterForm">
+                                {{ form_widget(form) }}
+                                <input class="btn" type="submit" value="{{ 'save'|trans }}" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.step3.example'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix" id="example">
+                            {{ mail|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

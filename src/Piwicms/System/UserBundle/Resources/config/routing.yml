@@ -1,0 +1,22 @@
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+piwicms_user_settings_edit:
+    pattern:  /profile/settings
+    defaults: { _controller: PiwicmsSystemUserBundle:UserSettings:edit }
+
+piwicms_admin_user:
+    resource: "@PiwicmsSystemUserBundle/Resources/config/routing/user.yml"
+    prefix: /admin/user
+
+piwicms_admin_group:
+    resource: "@PiwicmsSystemUserBundle/Resources/config/routing/group.yml"
+    prefix: /admin/group

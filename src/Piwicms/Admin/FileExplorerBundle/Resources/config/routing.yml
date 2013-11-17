@@ -1,0 +1,3 @@
+piwicms_admin_fileexplorer_index:
+    pattern:  /
+    defaults: { _controller: "PiwicmsAdminFileExplorerBundle:FileExplorer:index" }

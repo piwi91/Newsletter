@@ -1,0 +1,125 @@
+$(function() {
+    $.widget('piwicms.newsletterList', {
+        // Default options
+        options: {
+            wysiwygEditor: null,
+            templateList: null,
+            // Routes
+            ajaxChangeTemplateRoute: null,
+            // Translations
+            changeTemplateTrans: null
+        },
+
+        // Private variables
+        _element: null,
+
+        /**
+         * The constructor
+         *
+         * @private
+         */
+        _create: function() {
+            // Dirty workaround to preserve the widget scope
+            var $this = this;
+
+            this._element = this.element;
+
+            $(this.options.templateList).on('change', function(e){
+                var templateId = $(this).val();
+                console.log(templateId);
+                if (templateId !== '' || templateId !== undefined) {
+                    $this._changeTemplate(templateId);
+                }
+            });
+
+        },
+
+        _changeTemplate: function(id) {
+            var $this = this;
+            $(window).application('blockUI', [this.options.changeTemplateTrans, '']);
+            $.ajax({
+                url: Routing.generate(this.options.ajaxChangeTemplateRoute, { _format: 'json', id: id }),
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                    $(window).application('unblockUI');
+                    console.log('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
+                },
+                success: function(data) {
+                    $(window).application('unblockUI');
+                    console.log(data);
+                    $('#piwicms_newsletter_text').html(data.view);
+                    var viewBlocks = $('#viewblocks');
+                    $(viewBlocks).empty();
+                    var index = 0;
+                    if (data.entity.view_block) {
+                        $.each(data.entity.view_block, function(key, block){
+                            console.log(block);
+                            $(viewBlocks).append(
+                                $('<div></div>')
+                                    .append(
+                                        $('<input></input>')
+                                            .attr('name', 'view_block[' + index + '][id]')
+                                            .val(block.id)
+                                            .attr('type', 'hidden')
+                                    )
+                                    .append(
+                                        $('<label></label>')
+                                            .html(block.name)
+                                    )
+                                    .append(
+                                        $('<textarea></textarea>')
+                                            .attr('name', 'view_block[' + index + '][text]')
+                                            .tinymce()
+                                    )
+                            );
+                            index++;
+                        });
+                    }
+                },
+                dataType: 'json'
+            });
+        },
+
+        /**
+         * Is called with a hash of all options that are changing always refresh when changing options
+         *
+         * @private
+         */
+        _setOptions: function() {
+            // _super and _superApply handle keeping the right this-context
+            this._superApply(arguments);
+        },
+
+        /**
+         * Is called for each individual option that is changing
+         *
+         * @param key
+         * @param value
+         * @private
+         */
+        _setOption: function(key, value) {
+            this._super(key, value);
+        },
+
+        /**
+         * Called when created, and later when changing options
+         *
+         * @private
+         */
+        _refresh: function() {
+
+        },
+
+        /**
+         * Events bound via _on are removed automatically
+         *
+         * @private
+         */
+        _destroy: function() {
+            // Revert other modifications here
+            this.element.removeClass('hotflo-clock');
+
+            // Call the base destroy function
+            $.Widget.prototype.destroy.call(this);
+        }
+    });
+}(jQuery));

@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ parent() }} User{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/ViewBundle/Resources/public/js/viewForm.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}

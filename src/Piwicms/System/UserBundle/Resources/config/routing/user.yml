@@ -1,0 +1,40 @@
+piwicms_admin_user_index:
+    pattern:  /
+    defaults: { _controller: "PiwicmsSystemUserBundle:User:index" }
+
+piwicms_admin_user_indexDatatable:
+    pattern:  /indexDatatable.{_format}
+    defaults: { _controller: "PiwicmsSystemUserBundle:User:indexDatatable" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true
+
+piwicms_admin_user_new:
+    pattern:  /new
+    defaults: { _controller: "PiwicmsSystemUserBundle:User:new" }
+
+piwicms_admin_user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PiwicmsSystemUserBundle:User:edit" }
+    options:
+        expose: true
+
+piwicms_admin_user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PiwicmsSystemUserBundle:User:show" }
+    options:
+        expose: true
+
+piwicms_admin_user_reset:
+    pattern:  /{id}/reset
+    defaults: { _controller: "PiwicmsSystemUserBundle:User:reset" }
+    options:
+        expose: true
+
+piwicms_admin_user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PiwicmsSystemUserBundle:User:delete" }
+    options:
+        expose: true

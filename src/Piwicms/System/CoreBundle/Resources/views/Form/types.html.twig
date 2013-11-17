@@ -1,0 +1,18 @@
+{% block timepicker_widget %}
+    {% spaceless %}
+        {%  set attr = attr|merge({'class': ((attr.class|default('') ~ ' form-control input-small')|trim)}) %}
+        <input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endspaceless %}
+{% endblock timepicker_widget %}
+{% block datepicker_widget %}
+    {% spaceless %}
+        {%  set attr = attr|merge({'class': ((attr.class|default('') ~ ' form-control input-small')|trim)}) %}
+        <input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endspaceless %}
+{% endblock datepicker_widget %}
+{% block datetimepicker_widget %}
+    {% spaceless %}
+        {%  set attr = attr|merge({'class': ((attr.class|default('') ~ ' form-control input-small')|trim)}) %}
+        <input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endspaceless %}
+{% endblock datetimepicker_widget %}

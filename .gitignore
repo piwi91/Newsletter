@@ -7,7 +7,18 @@ vendor/*
 */cache/*
 web/uploads/*
 web/bundles/*
+web/js/*
+web/css/*
+web/img/*
+web/images/*
+web/assetic/*
 
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
+
+# PHPStorm
+.idea/*
+
+# Composer
+composer.phar

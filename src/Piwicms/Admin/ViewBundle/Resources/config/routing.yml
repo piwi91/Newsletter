@@ -1,0 +1,37 @@
+piwicms_admin_view_index:
+    pattern:  /
+    defaults: { _controller: "PiwicmsAdminViewBundle:View:index" }
+
+piwicms_admin_view_indexDatatable:
+    pattern:  /indexDatatable.{_format}
+    defaults: { _controller: "PiwicmsAdminViewBundle:View:indexDatatable" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true
+
+piwicms_admin_view_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PiwicmsAdminViewBundle:View:edit" }
+    options:
+        expose: true
+
+piwicms_admin_view_new:
+    pattern:  /new
+    defaults: { _controller: "PiwicmsAdminViewBundle:View:new" }
+
+piwicms_admin_view_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PiwicmsAdminViewBundle:View:delete" }
+    options:
+        expose: true
+
+piwicms_admin_view_ajax_renderedview:
+    pattern:  /{id}/ajax/show.{_format}
+    defaults: { _controller: "PiwicmsAdminViewBundle:View:ajaxRenderedView" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true

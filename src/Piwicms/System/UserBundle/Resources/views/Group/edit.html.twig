@@ -1,0 +1,32 @@
+{% extends "PiwicmsSystemUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-edit"></i>{{ 'userbundle.group.edit.title'|trans }} {{ entity.name }}
+                </div>
+                <div class="widget-content padded clearfix">
+                    <form action="{{ path('piwicms_admin_group_edit', { 'id': entity.id }) }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_group_profile_edit">
+                        <input type="hidden" name="_method" id="_method" value="PUT">
+                        {{ form_widget(form) }}
+                        <div class="col-md-9">
+                            <input class="btn" type="submit" value="{{ 'save'|trans }}" />
+                        </div>
+                    </form>
+                    <form action="{{ path('piwicms_admin_group_delete', { 'id': entity.id }) }}" method="post" class="form-horizontal">
+                        <div class="col-md-9">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_row(delete_form.id) }}
+                            {{ form_row(delete_form._token) }}
+                            {#<a class="btn btn-primary" href="{{ path('schedulecollection') }}">Back to the list</a>#}
+                            <button type="submit" class="btn btn-danger"><i class="icon-remove"></i> {{ 'delete'|trans }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

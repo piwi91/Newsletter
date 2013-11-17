@@ -1,0 +1,11 @@
+piwicms_client_newsletter:
+    pattern:  /{slug}.html
+    defaults: { _controller: PiwicmsClientNewsletterBundle:Newsletter:newsletter }
+
+piwicms_client_newsletter_subscribe:
+    pattern:  /subscribe
+    defaults: { _controller: PiwicmsClientNewsletterBundle:Newsletter:subscribe }
+
+piwicms_client_newsletter_unsubscribe:
+    pattern:  /unsubscribe
+    defaults: { _controller: PiwicmsClientNewsletterBundle:Newsletter:unsubscribe }

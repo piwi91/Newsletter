@@ -1,0 +1,22 @@
+client:
+    newsletterbundle:
+        newsletter:
+            subscribe:
+            unsubscribe:
+        form:
+            firstname: Firstname
+            surname: Surname
+            emailaddress: E-mailaddress
+            mailinglist: Mailing lists
+            submit_subscribe: Submit subscription
+            submit_unsubscribe: Submit unsubscription
+            subscribe:
+                add_title: New subscription
+                edit_title: Edit subscription
+                success: Thanks for you subscription!
+                error: Something went wrong :-(
+                already_exists: This e-mailaddress is already subscribed on this newsletter
+            unsubscribe:
+                success: You're unsubscription is completed.
+                error: Something went wrong :-(
+                no_user_found: Subscription not found

@@ -1,0 +1,48 @@
+parameters:
+    piwicms.controller.message.class: Piwicms\System\CoreBundle\Controller\MessageController
+
+services:
+    piwicms.datatable:
+        class: Piwicms\System\CoreBundle\Helper\Datatable
+        arguments:
+            em: @doctrine
+
+    piwicms.ajaxresponse:
+        class: Piwicms\System\CoreBundle\Helper\AjaxResponse
+        arguments:
+            JMSSerializer: @jms_serializer
+
+    upload_picture_service:
+        class: "%piwicms.controller.message.class%"
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    piwicms.twig.GlobalExtension:
+        class: Piwicms\System\CoreBundle\Twig\Extensions\GlobalExtension
+        arguments: ["@doctrine.orm.entity_manager","@security.context"]
+        tags:
+            - { name: twig.extension }
+
+    piwicms.twig.UnreadExtension:
+        class: Piwicms\System\CoreBundle\Twig\Extensions\UnreadExtension
+        tags:
+            - { name: twig.extension }
+
+    piwicms.form.type.wysiwyg:
+            class: Piwicms\System\CoreBundle\Form\Type\WysiwygType
+            tags:
+                - { name: form.type, alias: wysiwyg }
+
+    piwicms.form.type.datetimepicker:
+            class: Piwicms\System\CoreBundle\Form\Type\DatetimepickerType
+            tags:
+                - { name: form.type, alias: datetimepicker }
+
+    piwicms.form.type.datepicker:
+            class: Piwicms\System\CoreBundle\Form\Type\DatepickerType
+            tags:
+                - { name: form.type, alias: datepicker }
+
+    piwicms.form.type.timepicker:
+            class: Piwicms\System\CoreBundle\Form\Type\TimepickerType
+            tags:
+                - { name: form.type, alias: timepicker }

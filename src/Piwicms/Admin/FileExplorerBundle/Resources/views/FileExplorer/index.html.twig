@@ -1,0 +1,40 @@
+{% extends "PiwicmsAdminFileExplorerBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets output='assetic/css/compiled/fmelfinder/main.css'
+    'bundles/fmelfinder/css/*' filter='cssrewrite,?yui_css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts output='bundles/fmelfinder/js/main.js' filter='?yui_js'
+    '@FMElfinderBundle/Resources/public/js/elfinder.min.js'
+    '@FMElfinderBundle/Resources/public/js/i18n/*'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $('#elfinder').elfinder({
+            url : '{{ path('ef_connect') }}',
+            lang : '{{ app.request.locale }}'
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-file"></i>File Explorer
+                </div>
+                <div class="widget-content padded clearfix">
+                    <div id="elfinder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

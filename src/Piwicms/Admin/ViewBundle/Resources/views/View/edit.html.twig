@@ -1,0 +1,31 @@
+{% extends "PiwicmsAdminViewBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $(document).viewForm({
+                //tinyMceConfig: ''
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-edit"></i>{{ 'viewbundle.view.edit.title'|trans }} {{ entity.name }}
+                </div>
+                <div class="widget-content padded clearfix">
+                    <form action="{{ path('piwicms_admin_view_edit', { 'id': entity.id }) }}" {{ form_enctype(form) }} method="POST">
+                        <input type="hidden" name="_method" id="_method" value="PUT">
+                        {{ form_widget(form) }}
+                        <input class="btn" type="submit" value="{{ 'save'|trans }}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

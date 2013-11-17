@@ -1,0 +1,211 @@
+# Assetic Configuration
+assetic:
+    assets:
+        # Glyphicons
+#        img_bootstrap_glyphicons_black:
+#            inputs:
+#                -  "%kernel.root_dir%/../vendor/twitter/bootstrap/img/glyphicons-halflings.png"
+#            output: "img/glyphicons-halflings.png"
+#
+#        img_bootstrap_glyphicons_white:
+#            inputs:
+#                -  "%kernel.root_dir%/../vendor/twitter/bootstrap/img/glyphicons-halflings-white.png"
+#            output: "img/glyphicons-halflings-white.png"
+
+        # Datatables
+        img_datatables_back_enabled:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/back_enabled.png"
+            output: "img/datatables/back_enabled.png"
+
+        img_datatables_back_enabled_hover:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/back_enabled_hover.png"
+            output: "img/datatables/back_enabled_hover.png"
+
+        img_datatables_back_disabled:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/back_disabled.png"
+            output: "img/datatables/back_disabled.png"
+
+        img_datatables_forward_enabled:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/forward_enabled.png"
+            output: "img/datatables/forward_enabled.png"
+
+        img_datatables_forward_enabled_hover:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/forward_enabled_hover.png"
+            output: "img/datatables/forward_enabled_hover.png"
+
+        img_datatables_forward_disabled:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/forward_disabled.png"
+            output: "img/datatables/forward_disabled.png"
+
+        img_datatables_sort_both:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/sort_both.png"
+            output: "img/datatables/sort_both.png"
+
+        img_datatables_sort_asc:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/sort_asc.png"
+            output: "img/datatables/sort_asc.png"
+
+        img_datatables_sort_desc:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/sort_desc.png"
+            output: "img/datatables/sort_desc.png"
+
+        img_datatables_sort_asc_disabled:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/sort_asc_disabled.png"
+            output: "img/datatables/sort_asc_disabled.png"
+
+        img_datatables_sort_desc_disabled:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/datatables/media/images/sort_desc_disabled.png"
+            output: "img/datatables/sort_desc_disabled.png"
+
+        ui_bg_flat_0_aaaaaa_40x100:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_flat_0_aaaaaa_40x100.png"
+            output: "img/jqueryui-bootstrap/ui-bg_flat_0_aaaaaa_40x100.png"
+
+        ui_bg_glass_55_fbf9ee_1x400:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_glass_55_fbf9ee_1x400.png"
+            output: "img/jqueryui-bootstrap/ui-bg_glass_55_fbf9ee_1x400.png"
+
+        ui_bg_glass_65_ffffff_1x400:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_glass_65_ffffff_1x400.png"
+            output: "img/jqueryui-bootstrap/ui-bg_glass_65_ffffff_1x400.png"
+
+        ui_bg_glass_75_dadada_1x400:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_glass_75_dadada_1x400.png"
+            output: "img/jqueryui-bootstrap/ui-bg_glass_75_dadada_1x400.png"
+
+        ui_bg_glass_75_e6e6e6_1x400:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_glass_75_e6e6e6_1x400.png"
+            output: "img/jqueryui-bootstrap/ui-bg_glass_75_e6e6e6_1x400.png"
+
+        ui_bg_glass_75_ffffff_1x400:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_glass_75_ffffff_1x400.png"
+            output: "img/jqueryui-bootstrap/ui-bg_glass_75_ffffff_1x400.png"
+
+        ui_bg_highlight_soft_75_cccccc_1x100:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_highlight-soft_75_cccccc_1x100.png"
+            output: "img/jqueryui-bootstrap/ui-bg_highlight-soft_75_cccccc_1x100.png"
+
+        ui_bg_inset_soft_95_fef1ec_1x100:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-bg_inset-soft_95_fef1ec_1x100.png"
+            output: "img/jqueryui-bootstrap/ui-bg_inset-soft_95_fef1ec_1x100.png"
+
+        ui_icons_2e83ff_256x240:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-icons_2e83ff_256x240.png"
+            output: "img/jqueryui-bootstrap/ui-icons_2e83ff_256x240.png"
+
+        ui_icons_222222_256x240:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-icons_222222_256x240.png"
+            output: "img/jqueryui-bootstrap/ui-icons_222222_256x240.png"
+
+        ui_icons_454545_256x240:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-icons_454545_256x240.png"
+            output: "img/jqueryui-bootstrap/ui-icons_454545_256x240.png"
+
+        ui_icons_888888_256x240:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-icons_888888_256x240.png"
+            output: "img/jqueryui-bootstrap/ui-icons_888888_256x240.png"
+
+        ui_icons_cd0a0a_256x240:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-icons_cd0a0a_256x240.png"
+            output: "img/jqueryui-bootstrap/ui-icons_cd0a0a_256x240.png"
+
+        ui_icons_f6cf3b_256x240:
+            inputs:
+                -  "%kernel.root_dir%/../app/Resources/public/js/jqueryui-bootstrap/css/custom-theme/images/ui-icons_f6cf3b_256x240.png"
+            output: "img/jqueryui-bootstrap/ui-icons_f6cf3b_256x240.png"
+
+        # Application javascript
+        application_js:
+            inputs:
+                - %kernel.root_dir%/../components/jquery/jquery.min.js
+                - %kernel.root_dir%/../components/jquery-ui/ui/minified/jquery-ui.min.js
+                - %kernel.root_dir%/../components/modernizr/modernizr.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/transition.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/alert.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/button.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/carousel.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/collapse.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/dropdown.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/modal.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/tooltip.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/popover.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/scrollspy.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/tab.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/affix.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/application.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/raphael.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.mousewheel.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.vmap.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.vmap.sampledata.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.vmap.world.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.bootstrap.wizard.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/fullcalendar.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/gcal.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.dataTables.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.easy-pie-chart.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/excanvas.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.isotope.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/masonry.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/modernizr.custom.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.fancybox.pack.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/select2.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/styleswitcher.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/wysiwyg.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/morris.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/skycons.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/jquery.sparkline.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/se7en/respond.js
+                - %kernel.root_dir%/../app/Resources/public/js/sugarjs/sugar.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/blockui/blockui.js
+                - %kernel.root_dir%/../app/Resources/public/js/bootbox/bootbox.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/application.js
+            output: js/application.js
+
+        bootstrap_js:
+            inputs:
+                - %kernel.root_dir%/../components/jquery/jquery.min.js
+                - %kernel.root_dir%/../components/jquery-ui/ui/minified/jquery-ui.min.js
+                - %kernel.root_dir%/../components/modernizr/modernizr.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/transition.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/alert.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/button.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/carousel.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/collapse.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/dropdown.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/modal.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/tooltip.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/popover.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/scrollspy.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/tab.js
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/js/affix.js
+                - %kernel.root_dir%/../app/Resources/public/js/sugarjs/sugar.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/blockui/blockui.js
+                - %kernel.root_dir%/../app/Resources/public/js/bootbox/bootbox.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js
+                - %kernel.root_dir%/../app/Resources/public/js/application.js
+            output: js/bootstrap.js

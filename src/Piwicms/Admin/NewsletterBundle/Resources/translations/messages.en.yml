@@ -1,0 +1,31 @@
+newsletterbundle:
+    newsletter:
+        index:
+            title: Newsletters
+            table:
+                title: Title
+                date: Date
+                createdby: Created by
+        step1:
+            title: Creating a new newsletter - Step 1
+        step2:
+            title: Creating a new newsletter - Step 2
+            example: Newsletter example
+        step3:
+            title: Creating a new newsletter - Final step
+            example: Newsletter example
+
+    mailinglist:
+        index:
+            title: Mailing lists
+            table:
+                name: Name
+        show:
+            title: Mailing list users for
+            subscribelink: Subscribe url
+            unsubscribelink: Unsubscribe url
+        edit:
+            title: Edit mailing list
+        new:
+            title: Add mailing list
+

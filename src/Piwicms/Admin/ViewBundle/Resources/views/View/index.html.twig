@@ -1,0 +1,57 @@
+{% extends "PiwicmsAdminViewBundle::layout.html.twig" %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/ViewBundle/Resources/public/js/viewList.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).viewList({
+                dataTable: $('#table'),
+                dataTableContainer: $('#tableContainer'),
+                // Routing
+                ajaxDatatableRoute: 'piwicms_admin_view_indexDatatable',
+                editViewRoute: 'piwicms_admin_view_edit',
+                deleteViewRoute: 'piwicms_admin_view_delete',
+                // Translations
+                editTrans: 'Edit'
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-list"></i>{{ 'viewbundle.view.index.title'|trans }}
+                </div>
+                <div class="widget-content padded clearfix">
+                    <table class="table table-bordered table-striped" id="table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>{{ 'viewbundle.view.index.name'|trans }}</th>
+                            <th>{{ 'viewbundle.view.index.module'|trans }}</th>
+                            <th>{{ 'viewbundle.view.index.createdBy'|trans }}</th>
+                            <th class="hidden-md">{{ 'viewbundle.view.index.created'|trans }}</th>
+                            <th class="hidden-sm">{{ 'viewbundle.view.index.modified'|trans }}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="widget-content padded clearfix">
+                    <p><a href="{{ path('piwicms_admin_view_new') }}" class="btn btn-default">{{ 'new'|trans }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

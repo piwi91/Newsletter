@@ -1,0 +1,26 @@
+parameters:
+
+services:
+    piwicms.user.registration.form.type:
+        class: Piwicms\System\UserBundle\Form\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: piwicms_user_registration }
+
+    piwicms.user.profile.form.type:
+        class: Piwicms\System\UserBundle\Form\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: piwicms_user_profile }
+
+    piwicms.group.form.type:
+        class: Piwicms\System\UserBundle\Form\GroupFormType
+        arguments: [%fos_user.model.group.class%]
+        tags:
+            - { name: form.type, alias: piwicms_group }
+
+    piwicms.user.registration_listener:
+        class: Piwicms\System\UserBundle\EventListener\RegistrationListener
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: kernel.event_subscriber }

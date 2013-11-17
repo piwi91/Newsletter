@@ -1,0 +1,70 @@
+piwicms_admin_newsletter_indexDatatable:
+    pattern:  /indexDatatable.{_format}
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:indexDatatable" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true
+
+piwicms_admin_newsletter_index:
+    pattern:  /
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:index" }
+
+piwicms_admin_newsletter_step1:
+    pattern:  /step1
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:step1" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_step2:
+    pattern:  /step2
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:step2" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_step3:
+    pattern:  /step3
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:step3" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_render_example:
+    pattern:  /ajax/render_example
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:renderExample" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_submit:
+    pattern:  /submit
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:submit" }
+
+piwicms_admin_newsletter_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:delete" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_preview:
+    pattern:  /{id}/preview
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:preview" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_send_email:
+    pattern:  /{id}/send
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:sendEmail" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_stats:
+    pattern:  /{id}/statistics
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:statistics" }
+    options:
+        expose: true
+
+piwicms_admin_newsletter_stats_highcharts:
+    pattern:  /ajax/{id}/statistics/highcharts
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:Newsletter:statisticsHighcharts" }
+    options:
+        expose: true

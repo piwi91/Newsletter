@@ -1,0 +1,26 @@
+piwicms_admin_group_index:
+    pattern:  /
+    defaults: { _controller: "PiwicmsSystemUserBundle:Group:index" }
+
+piwicms_admin_group_indexDatatable:
+    pattern:  /indexDatatable.{_format}
+    defaults: { _controller: "PiwicmsSystemUserBundle:Group:indexDatatable" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true
+
+piwicms_admin_group_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PiwicmsSystemUserBundle:Group:edit" }
+    options:
+        expose: true
+
+piwicms_admin_group_new:
+    pattern:  /new
+    defaults: { _controller: "PiwicmsSystemUserBundle:Group:new" }
+
+piwicms_admin_group_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PiwicmsSystemUserBundle:Group:delete" }

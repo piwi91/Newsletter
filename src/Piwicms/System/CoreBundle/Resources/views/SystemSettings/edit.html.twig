@@ -1,0 +1,23 @@
+{% extends "PiwicmsSystemCoreBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="widget-container">
+                <form action="{{ path('piwicms_system_settings_edit') }}" {{ form_enctype(edit_form) }} method="POST" class="form-horizontal">
+                    <div class="control-group">
+                        <div class="controls">
+                            <h1>System settings</h1>
+                        </div>
+                    </div>
+                    {{ form_widget(edit_form) }}
+                    <div class="control-group">
+                        <div class="controls">
+                            <input class="btn" type="submit" value="{{ 'save'|trans }}" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

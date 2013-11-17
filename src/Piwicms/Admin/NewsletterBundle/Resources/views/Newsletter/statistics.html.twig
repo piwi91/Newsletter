@@ -1,0 +1,71 @@
+{% extends "PiwicmsAdminNewsletterBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/NewsletterBundle/Resources/public/js/Newsletter/statistics.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).newsletterStatistics({
+                id: {{ app.request.get('id') }},
+                chart01: $('#chart01'),
+                chart02: $('#chart02'),
+                chart03: $('#chart03')
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.statistics.chart01'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <div id="chart01"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.statistics.chart02'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <div id="chart02"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.statistics.chart03'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <div id="chart03"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.statistics.chart04'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <div id="chart04"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

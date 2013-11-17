@@ -1,0 +1,19 @@
+{% extends "PiwicmsSystemUserBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-gear"></i>Profile setting
+                </div>
+                <div class="widget-content padded clearfix">
+                    <form action="{{ path('piwicms_user_settings_edit') }}" {{ form_enctype(edit_form) }} method="POST" class="form-horizontal fos_user_profile_edit">
+                        {{ form_widget(edit_form) }}
+                        <input class="btn" type="submit" value="{{ 'save'|trans }}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

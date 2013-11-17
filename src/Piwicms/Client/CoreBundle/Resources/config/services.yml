@@ -1,0 +1,7 @@
+parameters:
+#    piwicms_client_core.example.class: Piwicms\Client\CoreBundle\Example
+
+services:
+#    piwicms_client_core.example:
+#        class: %piwicms_client_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

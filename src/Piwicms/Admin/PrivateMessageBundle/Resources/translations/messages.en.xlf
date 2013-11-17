@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>privatemessagebundle.privatemessage.index.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>privatemessagebundle.privatemessage.index.unread</source>
+                <target>Unread</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>privatemessagebundle.privatemessage.index.date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>privatemessagebundle.privatemessage.index.fromuser</source>
+                <target>From user</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>privatemessagebundle.privatemessage.index.title</source>
+                <target>Private messages</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>privatemessagebundle.privatemessage.edit.title</source>
+                <target>Edit private message</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>privatemessagebundle.privatemessage.new.title</source>
+                <target>New private message</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>privatemessagebundle.privatemessage.show.title</source>
+                <target>Private message: </target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>privatemessagebundle.privatemessage.index.replyon</source>
+                <target>Reply on</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>privatemessagebundle.privatemessage.index.getprivatemessage</source>
+                <target>Retrieving private message</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>privatemessagebundle.privatemessage.index.deleteconfirmation</source>
+                <target>Are you sure you want to delete this private message?</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,185 @@
+imports:
+    - { resource: assets.yml }
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+parameters:
+    piwicms.base_url: http://widmail.local #http://mailing.widdershoven.nl
+    piwicms.email.from: Widdershoven B.V.
+    piwicms.email.from.emailaddress: info@widdershoven.nl
+
+framework:
+    #esi:             ~
+    translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        assets_base_urls: %piwicms.base_url%
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: true
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        less:
+            node: /usr/local/bin/node
+            node_paths: [/usr/local/lib/node_modules]
+            apply_to: "\.less$"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: %kernel.root_dir%/data/data.db3
+        # path:     %database_path%
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    datetime_functions:
+                        DATE: Piwicms\System\CoreBundle\MySQL\Date
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:
+        type: file
+        path: "%kernel.root_dir%/spool"
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Piwicms\System\CoreBundle\Entity\User
+    group:
+        group_class: Piwicms\System\CoreBundle\Entity\Group
+        form:
+            type: piwicms_group
+    registration:
+        form:
+            type: piwicms_user_registration
+    profile:
+        form:
+            type: piwicms_user_profile
+
+mopa_bootstrap:
+    form:
+        show_legend: false # default is true
+        show_child_legend: false # default is true
+        error_type: block # or inline which is default
+        checkbox_label: 'widget' # default is both (label|widget|both)
+
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host:      'localhost'
+            port:      5672
+            user:      'guest'
+            password:  'guest'
+            vhost:     '/'
+            lazy:      false
+    producers:
+        upload_picture:
+            connection: default
+            exchange_options: {name: 'upload-picture', type: direct}
+    consumers:
+        upload_picture:
+            connection: default
+            exchange_options: {name: 'upload-picture', type: direct}
+            queue_options:    {name: 'upload-picture'}
+            callback:         upload_picture_service
+
+yz_supervisor:
+    default_environment: dev
+    servers:
+        prod:
+            SUPERVISOR_01:
+                host: 192.168.111.11
+                username: user
+                password: 123
+                port: 9001
+        dev:
+            locahost:
+                host: 127.0.0.1
+                username: user
+                password: 123
+                port: 9001
+
+#sc_datetimepicker:
+#    picker: ~
+
+stfalcon_tinymce:
+        include_jquery: false
+        tinymce_jquery: true
+        selector: ".tinymce"
+#        base_url: "http://yourdomain.com/" # this parameter may be included if you need to override the assets_base_urls for your template engine (to override a CDN base url)
+        # Get current language from the parameters.ini
+        language: %locale%
+        # Custom buttons
+#        tinymce_buttons:
+#            stfalcon: # Id of the first button
+#                title: "Stfalcon"
+#                image: "http://stfalcon.com/favicon.ico"
+        theme:
+            # Simple theme: same as default theme
+            simple:
+                 plugins:
+                     - "autolink lists link image hr anchor"
+                     - "searchreplace wordcount visualblocks visualchars code fullscreen"
+                     - "insertdatetime media nonbreaking table contextmenu directionality"
+                     - "paste textcolor"
+                 toolbar1: "bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
+                 toolbar2: "link image media | forecolor backcolor | fullscreen"
+                 removed_menuitems: 'newdocument'
+                 image_advtab: true
+                 file_browser_callback : elFinderBrowser
+
+fm_elfinder:
+    locale: %locale%
+    editor: tinymce4 # other choices are tinymce or simple
+    showhidden: false # defaults to false
+    fullscreen: true # defaults true, applies to simple and ckeditor editors
+    connector:
+        debug: false # defaults to false
+        roots:       # at least one root must be defined
+            uploads:
+                driver: LocalFileSystem
+                path: uploads
+                upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif']
+                upload_deny: ['all']
+                upload_max_size: 10M

@@ -1,0 +1,95 @@
+{% extends "PiwicmsAdminTaskBundle::layout.html.twig" %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/TaskBundle/Resources/public/js/taskList.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).taskList({
+                dataTable: $('#table'),
+                dataTableContainer: $('#tableContainer'),
+                showTaskContainer: $('#showTask'),
+                newTaskContainer: $('#newTask'),
+                showTitle: $('#showTitle'),
+                editTitle: $('#editTitle'),
+                showBody: $('#showBody'),
+                form: $('#privateMessageForm'),
+                newTaskButton: $('#newTaskButton'),
+                // Routing
+                ajaxDatatableRoute: 'piwicms_admin_task_indexDatatable',
+                ajaxShowTaskRoute: 'piwicms_admin_task_ajaxshow',
+                ajaxDeleteTaskRoute: 'piwicms_admin_task_ajaxdelete',
+                deleteTaskRoute: 'piwicms_admin_task_delete',
+                // Translations
+                editTrans: '{{ 'edit'|trans }}',
+                newTaskTrans: "{{ 'taskbundle.task.new.title'|trans }}",
+                editTaskTrans: "{{ 'taskbundle.task.edit.title'|trans }}",
+                replyTaskTrans: "{{ 'taskbundle.task.index.replyon'|trans }}",
+                getTaskTrans: "{{ 'taskbundle.task.index.gettask'|trans }}",
+                deleteConfirmationTrans: "{{ 'taskbundle.task.index.deleteconfirmation'|trans }}"
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-list"></i>{{ 'taskbundle.task.index.title'|trans }}
+                </div>
+                <div class="widget-content padded clearfix">
+                    <table class="table table-bordered table-striped" id="table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>{{ 'taskbundle.task.index.title'|trans }}</th>
+                            <th>{{ 'taskbundle.task.index.date'|trans }}</th>
+                            <th>{{ 'taskbundle.task.index.createdBy'|trans }}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="widget-content padded clearfix">
+                    <button class="btn btn-default" id="newTaskButton">{{ 'new'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12 hide" id="showTask">
+                    <div class="widget-container fluid-height">
+                        <div class="heading" id="showTitle">
+                        </div>
+                        <div class="widget-content padded clearfix" id="showBody">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12" id="newTask">
+                    <div class="widget-container">
+                        <div class="heading">
+                            <span id="editTitle">{{ 'taskbundle.task.new.title'|trans }} </span>
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <form action="{{ path('piwicms_admin_task_new') }}" {{ form_enctype(form) }} method="POST" id="privateMessageForm">
+                                <input type="hidden" name="_method" id="_method" value="POST">
+                                {{ form_widget(form) }}
+                                <input class="btn" type="submit" value="{{ 'send'|trans }}" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

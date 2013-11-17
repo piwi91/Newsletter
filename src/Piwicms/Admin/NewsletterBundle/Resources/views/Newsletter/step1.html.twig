@@ -1,0 +1,23 @@
+{% extends "PiwicmsAdminNewsletterBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12" id="newsletter">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.step1.title'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <form action="{{ path('piwicms_admin_newsletter_step2') }}" {{ form_enctype(form) }} method="POST" id="newsletterForm">
+                                {{ form_widget(form) }}
+                                <input class="btn" type="submit" value="{{ 'next'|trans }}" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,63 @@
+{% extends "PiwicmsAdminNewsletterBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .previewModal .modal-dialog {
+            /* new custom width */
+            width: 700px;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/NewsletterBundle/Resources/public/js/MailingList/index.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).mailingListIndex({
+                dataTable: $('#table'),
+                dataTableContainer: $('#tableContainer'),
+                // Routing
+                ajaxDatatableRoute: 'piwicms_admin_mailinglist_indexDatatable',
+                editMailingListRoute: 'piwicms_admin_mailinglist_edit',
+                deleteMailingListRoute: 'piwicms_admin_mailinglist_delete',
+                showMailingListRoute: 'piwicms_admin_mailinglist_show',
+                // Translations
+                editTrans: '{{ 'edit'|trans }}'
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-list"></i>{{ 'newsletterbundle.mailinglist.index.title'|trans }}
+                </div>
+                <div class="widget-content padded clearfix">
+                    <table class="table table-bordered table-striped" id="table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>{{ 'newsletterbundle.mailinglist.index.table.name'|trans }}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="widget-content padded clearfix">
+                    <p><a href="{{ path('piwicms_admin_mailinglist_new') }}" class="btn btn-default newMailingList">{{ 'new'|trans }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

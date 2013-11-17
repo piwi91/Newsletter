@@ -1,0 +1,94 @@
+{% extends "PiwicmsAdminPrivateMessageBundle::layout.html.twig" %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/PrivateMessageBundle/Resources/public/js/privatemessageList.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).privatemessageList({
+                dataTable: $('#table'),
+                dataTableContainer: $('#tableContainer'),
+                showPrivateMessageContainer: $('#showPrivateMessage'),
+                newPrivateMessageContainer: $('#newPrivateMessage'),
+                showTitle: $('#showTitle'),
+                replyTitle: $('#replyTitle'),
+                showBody: $('#showBody'),
+                form: $('#privateMessageForm'),
+                replyOn: $('#replyOn'),
+                newPrivateMessageButton: $('#newPrivateMessageButton'),
+                // Routing
+                ajaxDatatableRoute: 'piwicms_admin_privatemessage_indexDatatable',
+                ajaxShowPrivateMessageRoute: 'piwicms_admin_privatemessage_ajaxshow',
+                ajaxDeletePrivateMessageRoute: 'piwicms_admin_privatemessage_ajaxdelete',
+                deletePrivateMessageRoute: 'piwicms_admin_privatemessage_delete',
+                // Translations
+                editTrans: '{{ 'edit'|trans }}',
+                replyPrivateMessageTrans: "{{ 'privatemessagebundle.privatemessage.index.replyon'|trans }}",
+                getPrivateMessageTrans: "{{ 'privatemessagebundle.privatemessage.index.getprivatemessage'|trans }}",
+                deleteConfirmationTrans: "{{ 'privatemessagebundle.privatemessage.index.deleteconfirmation'|trans }}"
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-list"></i>{{ 'privatemessagebundle.privatemessage.index.title'|trans }}
+                </div>
+                <div class="widget-content padded clearfix">
+                    <table class="table table-bordered table-striped" id="table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>{{ 'privatemessagebundle.privatemessage.index.title'|trans }}</th>
+                            <th>{{ 'privatemessagebundle.privatemessage.index.date'|trans }}</th>
+                            <th>{{ 'privatemessagebundle.privatemessage.index.fromuser'|trans }}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="widget-content padded clearfix">
+                    <button class="btn btn-default" id="newPrivateMessageButton">{{ 'new'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12 hide" id="showPrivateMessage">
+                    <div class="widget-container fluid-height">
+                        <div class="heading" id="showTitle">
+                        </div>
+                        <div class="widget-content padded clearfix" id="showBody">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12" id="newPrivateMessage">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'privatemessagebundle.privatemessage.new.title'|trans }} <span id="replyTitle"></span>
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <form action="{{ path('piwicms_admin_privatemessage_new') }}" {{ form_enctype(form) }} method="POST" id="privateMessageForm">
+                                <input type="hidden" name="replyOn" id="replyOn" value="0"> <!-- Default new message -->
+                                {{ form_widget(form) }}
+                                <input class="btn" type="submit" value="{{ 'send'|trans }}" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

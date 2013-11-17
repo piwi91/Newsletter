@@ -1,0 +1,15 @@
+parameters:
+    piwicms.controller.message.class: Piwicms\System\CoreBundle\Controller\MessageController
+
+services:
+    piwicms.twig.databaseloader:
+        class: Piwicms\Admin\ViewBundle\Twig\DatabaseLoader
+        arguments: [@doctrine.orm.entity_manager, @logger]
+        tags:
+            - { name: twig.loader }
+
+    piwicms.twig.twig_chain_loader:
+        class: Twig_Loader_Chain
+        calls:
+            - [ addLoader, [@twig.loader] ]
+            - [ addLoader, [@piwicms.twig.databaseloader] ]

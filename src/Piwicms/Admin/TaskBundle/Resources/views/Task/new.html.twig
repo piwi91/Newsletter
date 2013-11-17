@@ -1,0 +1,19 @@
+{% extends "PiwicmsAdminTaskBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="widget-container">
+                <div class="heading">
+                    <i class="icon-plus"></i>{{ 'taskbundle.task.new.title'|trans }}
+                </div>
+                <div class="widget-content padded clearfix">
+                    <form action="{{ path('piwicms_admin_task_new') }}" {{ form_enctype(form) }} method="POST" class="">
+                        {{ form_widget(form) }}
+                        <input class="btn" type="submit" value="{{ 'save'|trans }}" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

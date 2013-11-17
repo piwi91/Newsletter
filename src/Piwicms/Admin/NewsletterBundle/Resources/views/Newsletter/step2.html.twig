@@ -1,0 +1,53 @@
+{% extends "PiwicmsAdminNewsletterBundle::layout.html.twig" %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/NewsletterBundle/Resources/public/js/Newsletter/step2.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).newsletterStep2({
+                template: {{ template }}
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6" id="newsletter">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.step2.title'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <form action="{{ path('piwicms_admin_newsletter_step3') }}" {{ form_enctype(form) }} method="POST" id="newsletterForm">
+                                {{ form_widget(form) }}
+                                <input class="btn" type="submit" value="{{ 'next'|trans }}" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'newsletterbundle.newsletter.step2.example'|trans }}
+                            <div class="pull-right">
+                                <button class="btn btn-default" id="renderExample">Render example</button>
+                            </div>
+                        </div>
+                        <div class="widget-content padded clearfix" id="example">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

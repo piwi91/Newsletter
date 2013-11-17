@@ -1,0 +1,40 @@
+piwicms_admin_privatemessage_index:
+    pattern:  /
+    defaults: { _controller: "PiwicmsAdminPrivateMessageBundle:PrivateMessage:index" }
+
+piwicms_admin_privatemessage_indexDatatable:
+    pattern:  /indexDatatable.{_format}
+    defaults: { _controller: "PiwicmsAdminPrivateMessageBundle:PrivateMessage:indexDatatable" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true
+
+piwicms_admin_privatemessage_ajaxshow:
+    pattern:  /{id}/ajax/show
+    defaults: { _controller: "PiwicmsAdminPrivateMessageBundle:PrivateMessage:ajaxShow" }
+    options:
+        expose: true
+
+piwicms_admin_privatemessage_ajaxdelete:
+    pattern:  /{id}/ajax/delete
+    defaults: { _controller: "PiwicmsAdminPrivateMessageBundle:PrivateMessage:ajaxDelete" }
+    options:
+        expose: true
+
+piwicms_admin_privatemessage_show:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PiwicmsAdminPrivateMessageBundle:PrivateMessage:show" }
+    options:
+        expose: true
+
+piwicms_admin_privatemessage_new:
+    pattern:  /new
+    defaults: { _controller: "PiwicmsAdminPrivateMessageBundle:PrivateMessage:new" }
+
+piwicms_admin_privatemessage_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PiwicmsAdminPrivateMessageBundle:PrivateMessage:delete" }
+    options:
+        expose: true
