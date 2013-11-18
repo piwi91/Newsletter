@@ -233,12 +233,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craue/CraueFormFlowBundle.git",
-                "reference": "26d0d929380189400d2fb7ae6583dfb205ffc24e"
+                "reference": "671cd764cb635f461a5f4e227a448a4189c560ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craue/CraueFormFlowBundle/zipball/26d0d929380189400d2fb7ae6583dfb205ffc24e",
-                "reference": "26d0d929380189400d2fb7ae6583dfb205ffc24e",
+                "url": "https://api.github.com/repos/craue/CraueFormFlowBundle/zipball/671cd764cb635f461a5f4e227a448a4189c560ce",
+                "reference": "671cd764cb635f461a5f4e227a448a4189c560ce",
                 "shasum": ""
             },
             "require": {
@@ -278,7 +278,7 @@
                 "Symfony2",
                 "form"
             ],
-            "time": "2013-11-11 10:35:24"
+            "time": "2013-11-18 17:00:31"
         },
         {
             "name": "doctrine/annotations",
@@ -1090,17 +1090,17 @@
         },
         {
             "name": "helios-ag/fm-elfinder-bundle",
-            "version": "1.4",
+            "version": "1.4.1",
             "target-dir": "FM/ElfinderBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/FMElfinderBundle.git",
-                "reference": "96a8b42a1396fa4319551368b6d19673078f101b"
+                "reference": "613f11d45c942c4fe63a5df0ca2ea4d285f58473"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/96a8b42a1396fa4319551368b6d19673078f101b",
-                "reference": "96a8b42a1396fa4319551368b6d19673078f101b",
+                "url": "https://api.github.com/repos/helios-ag/FMElfinderBundle/zipball/613f11d45c942c4fe63a5df0ca2ea4d285f58473",
+                "reference": "613f11d45c942c4fe63a5df0ca2ea4d285f58473",
                 "shasum": ""
             },
             "require": {
@@ -1140,7 +1140,7 @@
                 "elfinder",
                 "file manager"
             ],
-            "time": "2013-10-03 16:18:13"
+            "time": "2013-11-13 08:24:44"
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
@@ -1864,16 +1864,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "f72392d0e6eb855118f5a84e89ac2d257c704abd"
+                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f72392d0e6eb855118f5a84e89ac2d257c704abd",
-                "reference": "f72392d0e6eb855118f5a84e89ac2d257c704abd",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6225b22de9dcf36546be3a0b2fa8e3d986153f57",
+                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57",
                 "shasum": ""
             },
             "require": {
@@ -1881,21 +1881,26 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
+                "aws/aws-sdk-php": "~2.4.8",
                 "doctrine/couchdb": "dev-master",
                 "mlehner/gelf-php": "1.0.*",
-                "raven/raven": "0.5.*"
+                "phpunit/phpunit": "~3.7.0",
+                "raven/raven": "0.5.*",
+                "ruflin/elastica": "0.90.*"
             },
             "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "raven/raven": "Allow sending log messages to a Sentry server"
+                "raven/raven": "Allow sending log messages to a Sentry server",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.7.x-dev"
                 }
             },
             "autoload": {
@@ -1922,7 +1927,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-07-28 22:38:30"
+            "time": "2013-11-14 19:48:31"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -1931,12 +1936,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "bee69d773bcce4ebac3a4f040aeac1d6ae7a9001"
+                "reference": "b8fde837dbb74214d09c217d98e14e9993282454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/bee69d773bcce4ebac3a4f040aeac1d6ae7a9001",
-                "reference": "bee69d773bcce4ebac3a4f040aeac1d6ae7a9001",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/b8fde837dbb74214d09c217d98e14e9993282454",
+                "reference": "b8fde837dbb74214d09c217d98e14e9993282454",
                 "shasum": ""
             },
             "require": {
@@ -1988,7 +1993,7 @@
                 "form",
                 "template"
             ],
-            "time": "2013-11-12 08:38:02"
+            "time": "2013-11-20 18:24:54"
         },
         {
             "name": "mopa/composer-bridge",
@@ -2811,16 +2816,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.3.6",
+            "version": "v2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "d0597156c4c03ceca039f6b7770a47397ba295f0"
+                "reference": "2829b471871c2564228fe9f0832a0f928a8ffaa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/d0597156c4c03ceca039f6b7770a47397ba295f0",
-                "reference": "d0597156c4c03ceca039f6b7770a47397ba295f0",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/2829b471871c2564228fe9f0832a0f928a8ffaa1",
+                "reference": "2829b471871c2564228fe9f0832a0f928a8ffaa1",
                 "shasum": ""
             },
             "require": {
@@ -2915,7 +2920,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-10-10 13:24:22"
+            "time": "2013-11-14 07:58:51"
         },
         {
             "name": "twbs/bootstrap",
@@ -2923,12 +2928,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "c1c2a8e18867bfa1644928428c693b367a5617a1"
+                "reference": "6ed5a844a8ca3582240ddda70d63a3d7bfea7c50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/c1c2a8e18867bfa1644928428c693b367a5617a1",
-                "reference": "c1c2a8e18867bfa1644928428c693b367a5617a1",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/6ed5a844a8ca3582240ddda70d63a3d7bfea7c50",
+                "reference": "6ed5a844a8ca3582240ddda70d63a3d7bfea7c50",
                 "shasum": ""
             },
             "type": "library",
@@ -2957,7 +2962,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2013-11-11 22:44:40"
+            "time": "2013-11-19 22:15:09"
         },
         {
             "name": "twig/extensions",
@@ -3061,12 +3066,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "c1c2a8e18867bfa1644928428c693b367a5617a1"
+                "reference": "6ed5a844a8ca3582240ddda70d63a3d7bfea7c50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/c1c2a8e18867bfa1644928428c693b367a5617a1",
-                "reference": "c1c2a8e18867bfa1644928428c693b367a5617a1",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/6ed5a844a8ca3582240ddda70d63a3d7bfea7c50",
+                "reference": "6ed5a844a8ca3582240ddda70d63a3d7bfea7c50",
                 "shasum": ""
             },
             "type": "library",
@@ -3095,7 +3100,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2013-11-11 22:44:40"
+            "time": "2013-11-19 22:15:09"
         },
         {
             "name": "videlalvaro/php-amqplib",

@@ -1,0 +1,31 @@
+newsletterbundle:
+    newsletter:
+        index:
+            title: Niewsbrieven
+            table:
+                title: Titel
+                date: Datum
+                createdby: Aangemaakt door
+        step1:
+            title: Maak een nieuwe nieuwsbrief - Stap 1
+        step2:
+            title: Maak een nieuwe nieuwsbrief - Stap 2
+            example: Nieuwsbrief voorbeeld
+        step3:
+            title: Maak een nieuwe nieuwsbrief - Laatste stap
+            example: Nieuwsbrief voorbeeld
+
+    mailinglist:
+        index:
+            title: Mailinglijsten
+            table:
+                name: Naam
+        show:
+            title: Gebruikers voor de mailinglijst
+            subscribelink: Aanmeldlink
+            unsubscribelink: Afmeldlink
+        edit:
+            title: Wijzig mailinglijst
+        new:
+            title: Nieuwe mailinglijst
+

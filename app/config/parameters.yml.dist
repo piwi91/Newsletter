@@ -13,3 +13,7 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    piwicms.base_url: ~
+    piwicms.email.from: ~
+    piwicms.email.from.emailaddress: ~

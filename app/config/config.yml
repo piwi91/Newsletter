@@ -3,11 +3,6 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
-parameters:
-    piwicms.base_url: http://widmail.local #http://mailing.widdershoven.nl
-    piwicms.email.from: Widdershoven B.V.
-    piwicms.email.from.emailaddress: info@widdershoven.nl
-
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
