@@ -31,14 +31,14 @@ $(function() {
 
         _initPrototype: function() {
             var $this = this;
-            this._collectionHolder = $('#piwicms_view_viewBlock_control_group');
+            this._collectionHolder = $('.piwicms_view_viewBlock_form_group');
             this._prototype = $(this._collectionHolder).data('prototype');
             this._index = $(this._collectionHolder).find(':input').length;
-            $(this._collectionHolder).children().eq(1).children().each(function() {
-                $this._deleteBlockText(this);
-            });
-
-            this._addBlockText($(this._collectionHolder).children(0).eq(0));
+//            $(this._collectionHolder).children().eq(1).children().each(function() {
+//                $this._deleteBlockText(this);
+//            });
+//
+//            this._addBlockText($(this._collectionHolder).children(0).eq(0));
         },
 
         _deleteBlockText: function(element) {

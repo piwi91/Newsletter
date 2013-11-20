@@ -20,7 +20,8 @@ class BlocksType extends AbstractType
     {
         $builder
             ->add('name', 'text', array(
-                'required' => true
+                'required' => true,
+                'label' => false,
             ));
     }
 

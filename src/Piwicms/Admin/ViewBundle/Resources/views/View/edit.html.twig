@@ -1,5 +1,7 @@
 {% extends "PiwicmsAdminViewBundle::layout.html.twig" %}
 
+{% form_theme form.viewBlock _self %}
+
 {% block javascripts %}
     {{ parent() }}
     <script>
@@ -29,3 +31,8 @@
         </div>
     </div>
 {% endblock body %}
+
+{% block _name_widget %}
+    <div class="text_widget">
+    </div>
+{% endblock %}

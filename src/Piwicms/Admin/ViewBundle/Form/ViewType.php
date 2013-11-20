@@ -36,7 +36,22 @@ class ViewType extends AbstractType
                 'type' => new BlocksType(),
                 'allow_add' => true,
                 'allow_delete' => true,
-                'by_reference' => false
+                'by_reference' => false,
+                'options' => array (
+                    'attr' => array (
+                        'class' => 'viewblock'
+                    ),
+                    'label' => false,
+                    'widget_remove_btn' => array(
+                        'label' => "remove this",
+                        "icon" => "pencil",
+                        'attr' => array('class' => 'btn btn-danger')
+                    ),
+                ),
+                'widget_add_btn' => array(
+                    'icon' => 'plus',
+                    'label' => 'add'
+                )
             ));
     }
 
