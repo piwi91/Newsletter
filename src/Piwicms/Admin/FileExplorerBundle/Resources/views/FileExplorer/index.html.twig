@@ -4,7 +4,7 @@
     {{ parent() }}
     {% stylesheets
     output='assetic/css/compiled/fmelfinder/main.css'
-    filter="less,cssrewrite"
+    filter="cssrewrite"
         'bundles/fmelfinder/css/*'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
