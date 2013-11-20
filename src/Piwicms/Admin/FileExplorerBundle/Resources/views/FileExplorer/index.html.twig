@@ -2,15 +2,20 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets output='assetic/css/compiled/fmelfinder/main.css'
-    'bundles/fmelfinder/css/*' filter='cssrewrite,?yui_css' %}
+    {% stylesheets
+    output='assetic/css/compiled/fmelfinder/main.css'
+    filter="less,cssrewrite"
+        'bundles/fmelfinder/css/*'
+    %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts output='bundles/fmelfinder/js/main.js' filter='?yui_js'
+    {% javascripts
+    output='bundles/fmelfinder/js/main.js'
+
     '@FMElfinderBundle/Resources/public/js/elfinder.min.js'
     '@FMElfinderBundle/Resources/public/js/i18n/*'
     %}
