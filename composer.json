@@ -34,7 +34,7 @@
         "components/modernizr": "dev-master",
         "oldsound/rabbitmq-bundle": "1.2.*@dev",
         "yzalis/supervisor-bundle": "1.0.*@dev",
-        "stfalcon/tinymce-bundle": "dev-master",
+        "stfalcon/tinymce-bundle": "v0.3.2",
         "jms/serializer-bundle": "dev-master",
         "helios-ag/fm-elfinder-bundle": "1.x",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
