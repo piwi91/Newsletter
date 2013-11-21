@@ -29,6 +29,6 @@ class BaseController extends Controller
             'mailingId' => $mailingId,
             'trackingId' => $trackingId
         ));
-        return '<img src="' . $url . '">';
+        return '<img src="' . $this->container->getParameter('piwicms.base_url') . $url . '">';
     }
 }
