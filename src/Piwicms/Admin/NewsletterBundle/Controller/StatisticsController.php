@@ -21,7 +21,7 @@ class StatisticsController extends BaseController
         $mailingEntity = $em->getRepository('PiwicmsSystemCoreBundle:Mailing')->find($mailingId);
         $mailingUserEntity = $em->getRepository('PiwicmsSystemCoreBundle:MailingUser')->find($trackingId);
 
-        $this->addStatistic('url', $mailingEntity, $mailingUserEntity, $url);
+        $this->addStatistic('url', $mailingEntity, $mailingUserEntity, urldecode($url));
 
         return $this->redirect(urldecode($url));
     }

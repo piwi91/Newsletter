@@ -14,16 +14,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BaseController extends Controller
 {
-    protected function generateStatisticUrl($originalUrl, $trackingId = 0, $mailingId = 0)
+    protected function generateStatisticUrl($originalUrl, $mailingId = 0, $trackingId = 0)
     {
         return $this->container->getParameter('piwicms.base_url') . $this->generateUrl('piwicms_newsletter_redirect_url', array (
-            'url' => $originalUrl,
+            'url' => urlencode($originalUrl),
             'mailingId' => $mailingId,
             'trackingId' => $trackingId
         ));
     }
 
-    protected function generateTrackingImage($trackingId = 0, $mailingId = 0)
+    protected function generateTrackingImage($mailingId = 0, $trackingId = 0)
     {
         $url = $this->generateUrl('piwicms_newsletter_tracking_image', array (
             'mailingId' => $mailingId,

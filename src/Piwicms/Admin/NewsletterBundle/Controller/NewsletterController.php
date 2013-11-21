@@ -464,11 +464,11 @@ class NewsletterController extends BaseController
     {
         $renderedView = $this->renderView($template->getName(), $blocks);
         // Check if there is a url in the text
-        if(preg_match_all('/(href=")(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?\"/', $renderedView, $urls)) {
-            foreach ($urls[0] as $url) {
-                $newUrl = 'href="' . $this->generateStatisticUrl(str_replace('href="', '', $url), $mailingId, $trackingId) . '"';
+        if(preg_match_all('/href="(http|https)\:\/\/([^"]+)"/', $renderedView, $matches)) {
+            foreach ($matches[0] as $key => $match) {
+                $newUrl = $this->generateStatisticUrl($matches[1][$key] . '://' . $matches[2][$key], $mailingId, $trackingId);
                 $renderedView = str_replace(
-                    $url,
+                    $matches[1][$key] . '://' . $matches[2][$key],
                     $newUrl,
                     $renderedView
                 );
