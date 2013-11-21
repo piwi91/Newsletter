@@ -17,7 +17,7 @@ class BaseController extends Controller
     protected function generateStatisticUrl($originalUrl, $trackingId = 0, $mailingId = 0)
     {
         return $this->container->getParameter('piwicms.base_url') . $this->generateUrl('piwicms_newsletter_redirect_url', array (
-            'url' => urlencode($originalUrl),
+            'url' => $originalUrl,
             'mailingId' => $mailingId,
             'trackingId' => $trackingId
         ));
