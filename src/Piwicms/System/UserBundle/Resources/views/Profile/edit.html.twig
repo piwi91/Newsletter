@@ -2,15 +2,15 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
+        <div class="col-lg-6 col-lg-offset-3">
             <div class="widget-container">
                 <div class="heading">
-                    <i class="icon-user"></i>Profile
+                    <i class="icon-user"></i>{{ 'userbundle.profile.edit.title' }}
                 </div>
                 <div class="widget-content padded clearfix">
                     <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_user_profile_edit">
                         {{ form_widget(form) }}
-                        <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                        <input class="btn" type="submit" value="{{ 'save'|trans }}" />
                     </form>
                 </div>
             </div>

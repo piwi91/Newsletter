@@ -23,3 +23,6 @@ userbundle:
             title: Edit group
         new:
             title: Add group
+    profile:
+        edit:
+            title: Edit profile

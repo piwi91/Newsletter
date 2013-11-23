@@ -1,0 +1,16 @@
+taskbundle:
+    task:
+        index:
+            title: Titel
+            unread: Ongelezen
+            date: Datum
+            createdBy: Aangemaakt door
+            replyon: Reageer op
+            gettask: Krijg taak
+            deleteconfirmation: Wilt u deze taak echt verwijderen?
+        edit:
+            title: Wijzig taak
+        new:
+            title: Nieuwe taak
+        show:
+            title: Taak:

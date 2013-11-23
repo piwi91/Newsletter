@@ -1,0 +1,17 @@
+privatemessagebundle:
+    privatemessage:
+        index:
+            title: Titel
+            unread: Ongelezen
+            date: Datum
+            createdBy: Verstuurd door
+            fromuser: Van gebruiker
+            replyon: Reageer op
+            deleteconfirmation: Wilt u dit bericht zeker verwijderen?
+            getprivatemessage: Bericht ophalen
+        edit:
+            title: Wijzig bericht
+        new:
+            title: Nieuw bericht
+        show:
+            title: Persoonlijk bericht:

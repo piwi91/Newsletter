@@ -1,0 +1,13 @@
+viewbundle:
+    view:
+        index:
+            title: Templates
+            name: Naam
+            module: Module
+            createdBy: Aangemaakt door
+            created: Aangemaakt
+            modified: Gewijzigd
+        edit:
+            title: Wijzig template
+        add:
+            title: Nieuwe template

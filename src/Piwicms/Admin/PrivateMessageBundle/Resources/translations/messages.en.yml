@@ -1,0 +1,19 @@
+privatemessagebundle:
+    privatemessage:
+        index:
+            title: Title
+            unread: Undread
+            date: Date
+            createdBy: Created by
+            fromuser: From user
+            replyon: Reply on
+            gettask: Retrieving task
+            deleteconfirmation: Are you sure you want to delete this task?
+            getprivatemessage: Retrieving private message
+            deleteconfirmation: Are you sure you want to delete this private message?
+        edit:
+            title: Edit private message
+        new:
+            title: Add private message
+        show:
+            title: Private message:

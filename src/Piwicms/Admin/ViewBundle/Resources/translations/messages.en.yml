@@ -1,0 +1,13 @@
+viewbundle:
+    view:
+        index:
+            title: Templates
+            name: Name
+            module: Module
+            createdBy: Created by
+            created: Created
+            modified: Modified
+        edit:
+            title: Edit template
+        add:
+            title: Add template

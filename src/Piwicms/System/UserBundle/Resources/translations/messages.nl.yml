@@ -23,3 +23,6 @@ userbundle:
             title: Wijzig groep
         new:
             title: Nieuwe groep
+    profile:
+        edit:
+            title: Wijzig profiel

@@ -1,0 +1,16 @@
+taskbundle:
+    task:
+        index:
+            title: Title
+            unread: Undread
+            date: Date
+            createdBy: Created by
+            replyon: Reply on
+            gettask: Retrieving task
+            deleteconfirmation: Are you sure you want to delete this task?
+        edit:
+            title: Edit task
+        new:
+            title: Add task
+        show:
+            title: Task:
