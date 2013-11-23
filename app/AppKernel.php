@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Piwicms\Admin\NewsletterBundle\PiwicmsAdminNewsletterBundle(),
             new Piwicms\Client\NewsletterBundle\PiwicmsClientNewsletterBundle(),
             new Piwicms\Client\CoreBundle\PiwicmsClientCoreBundle(),
+            new Piwicms\Admin\WebBundle\PiwicmsAdminWebBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

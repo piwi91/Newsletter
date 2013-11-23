@@ -1,26 +1,53 @@
-{% extends "::login.html.twig" %}
+{% extends "PiwicmsAdminWebBundle::base.html.twig" %}
+{% from '::flash.html.twig' import session_flash %}
 
-{% block body %}
+{% block start_body_tag %}
+<body class="login1">
+{% endblock start_body_tag %}
+
+{% block container %}
     {% if error %}
-        <div>{{ error|trans }}</div>
+        <div class="error">{{ error|trans }}</div>
     {% endif %}
 
-    <form action="{{ path("fos_user_security_check") }}" class="form-horizontal" method="post">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon-user"></i></span><input class="form-control" type="text" value="username" id="username" name="_username" required="required">
-            </div>
+    <!-- Login Screen -->
+    <div class="login-wrapper">
+        <div class="login-container">
+            {% block flashes %}
+                {% if app.session.flashbag.peekAll|length > 0 %}
+                    <div class="row">
+                        <div id="flash" class="col-lg-12">
+                            {{ session_flash() }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock flashes %}
+            <a href="./"><img width="200" height="60" src="{{ asset('bundles/piwicmsadminweb/images/piwiweb-logo@2x.png') }}" /></a>
+            <form action="{{ path("fos_user_security_check") }}" class="form-horizontal" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <div class="form-group">
+                    <input class="form-control" type="text" id="username" name="_username" required="required" placeholder="{{ 'security.login.username'|trans }}">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}"><input type="submit" id="_submit" name="_submit" value="&#xf054;">
+                </div>
+                <div class="form-options clearfix">
+                    <div class="text-left">
+                        <label class="checkbox"><input type="checkbox" id="remember_me" name="_remember_me" value="on"><span>{{ 'security.login.remember_me'|trans }}</span></label>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="icon-lock"></i></span><input class="form-control" type="password" value="Password" id="password" name="_password" required="required">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="checkbox"><input type="checkbox" id="remember_me" name="_remember_me" value="on" > {{ 'security.login.remember_me'|trans }}</label>
-        </div>
-        <input class="btn btn-lg btn-primary btn-block login-submit" type="submit" id="_submit" name="_submit" class="form-control" value="{{ 'security.login.submit'|trans }}" />
-    </form>
+    </div>
+    <!-- End Login Screen -->
+{% endblock container %}
 
-{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(window).load(function() {
+            return $(".login-container").addClass("active");
+        });
+    </script>
+{% endblock %}

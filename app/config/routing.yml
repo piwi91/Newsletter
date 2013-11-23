@@ -1,3 +1,7 @@
+piwicms_admin_web:
+    resource: "@PiwicmsAdminWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
 piwicms_newsletter_redirect_url:
     pattern: /newsletter/redirect/{url}/{mailingId}/{trackingId}
     defaults: { _controller: "PiwicmsAdminNewsletterBundle:Statistics:redirect" }

@@ -1,0 +1,25 @@
+security:
+    login:
+        username: Username
+        password: Password
+        remember_me: Remember me
+userbundle:
+    user:
+        index:
+            title: Users
+            username: Username
+            name: Full name
+            emailaddress: E-mailaddress
+        edit:
+            title: Edit user
+        new:
+            title: Add user
+    group:
+        index:
+            title: Groups
+            name: Name
+            roles: Roles
+        edit:
+            title: Edit group
+        new:
+            title: Add group

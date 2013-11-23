@@ -1,5 +1,5 @@
 imports:
-    - { resource: assets.yml }
+#    - { resource: assets.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
 

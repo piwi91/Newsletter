@@ -1,0 +1,25 @@
+security:
+    login:
+        username: Gebruikersnaam
+        password: Wachtwoord
+        remember_me: Blijf ingelogd
+userbundle:
+    user:
+        index:
+            title: Gebruikers
+            username: Gebruikersnaam
+            name: Volledige naam
+            emailaddress: E-mailadres
+        edit:
+            title: Wijzig gebruiker
+        new:
+            title: Nieuwe gebruiker
+    group:
+        index:
+            title: Groepen
+            name: Naam
+            roles: Rollen
+        edit:
+            title: Wijzig groep
+        new:
+            title: Nieuwe groep

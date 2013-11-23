@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+<head>
+    {% from '::flash.html.twig' import session_flash %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <title>Piwi-Web Beheerpaneel - {% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
+        {% stylesheets
+        output="css/style.css"
+        filter="less,cssrewrite"
+        'http://fonts.googleapis.com/css?family=Lato:100,300,400,700'
+        'bundles/piwicmsadminweb/less/style.less'
+        'bundles/piwicmsadminweb/js/tags/jquery.tagsinput.css'
+        'bundles/piwicmsadminweb/js/uploadify/uploadify.css'
+        'bundles/piwicmsadminweb/js/elfinder/css/theme.css'
+
+        'bundles/piwicmsadminweb/css/font-awesome.css'
+        'bundles/piwicmsadminweb/css/se7en-font.css'
+        'bundles/piwicmsadminweb/css/isotope.css'
+        'bundles/piwicmsadminweb/css/jquery.fancybox.css'
+        'bundles/piwicmsadminweb/css/fullcalendar.css'
+        'bundles/piwicmsadminweb/css/wizard.css'
+        'bundles/piwicmsadminweb/css/select2.css'
+        'bundles/piwicmsadminweb/css/morris.css'
+        'bundles/piwicmsadminweb/css/datatables.css'
+        'bundles/piwicmsadminweb/css/pygments.css'
+        'bundles/piwicmsadminweb/css/style.css'
+        'bundles/piwicmsadminweb/css/color/green.css'
+        'bundles/piwicmsadminweb/css/color/orange.css'
+        'bundles/piwicmsadminweb/css/color/magenta.css'
+        'bundles/piwicmsadminweb/css/color/gray.css'
+        'bundles/piwicmsadminweb/js/bootstrap-datetimepicker/less/bootstrap-datetimepicker.less'
+        %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+
+    {% block start_body_tag %}
+    <body>
+    {% endblock start_body_tag %}
+
+    {% block container %}
+        {% if app.user %}
+            {% include '::menu.html.twig' %}
+        {% endif %}
+        <div class="container-fluid main-content">
+            {% block flashes %}
+                {% if app.session.flashbag.peekAll|length > 0 %}
+                    <div class="row">
+                        <div id="flash" class="col-lg-12">
+                            {{ session_flash() }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock flashes %}
+
+            {% block body %}{% endblock body %}
+        </div>
+    {% endblock container %}
+
+{% block javascripts %}
+    {% javascripts combine=true
+    '../components/jquery/jquery.min.js'
+    '../components/jquery-ui/ui/minified/jquery-ui.min.js'
+    '../components/modernizr/modernizr.js'
+
+    'bundles/mopabootstrap/bootstrap/js/tooltip.js'
+    'bundles/mopabootstrap/bootstrap/js/affix.js'
+    'bundles/mopabootstrap/bootstrap/js/alert.js'
+    'bundles/mopabootstrap/bootstrap/js/button.js'
+    'bundles/mopabootstrap/bootstrap/js/carousel.js'
+    'bundles/mopabootstrap/bootstrap/js/collapse.js'
+    'bundles/mopabootstrap/bootstrap/js/dropdown.js'
+    'bundles/mopabootstrap/bootstrap/js/modal.js'
+    'bundles/mopabootstrap/bootstrap/js/popover.js'
+    'bundles/mopabootstrap/bootstrap/js/scrollspy.js'
+    'bundles/mopabootstrap/bootstrap/js/tab.js'
+    'bundles/mopabootstrap/bootstrap/js/transition.js'
+    'bundles/mopabootstrap/js/mopabootstrap-collection.js'
+    'bundles/mopabootstrap/js/mopabootstrap-subnav.js'
+
+    'bundles/piwicmsadminweb/js/se7en/bootstrap-colorpicker.js'
+    'bundles/piwicmsadminweb/js/se7en/bootstrap-datepicker.js'
+    'bundles/piwicmsadminweb/js/se7en/bootstrap-fileupload.js'
+    'bundles/piwicmsadminweb/js/se7en/bootstrap-switch.min.js'
+    'bundles/piwicmsadminweb/js/se7en/bootstrap-timepicker.js'
+    'bundles/piwicmsadminweb/js/se7en/date.js'
+    'bundles/piwicmsadminweb/js/se7en/daterange-picker.js'
+    'bundles/piwicmsadminweb/js/se7en/docs.js'
+    'bundles/piwicmsadminweb/js/se7en/excanvas.min.js'
+    'bundles/piwicmsadminweb/js/se7en/fitvids.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.bootstrap.wizard.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.dataTables.min.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.easy-pie-chart.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.fancybox.pack.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.iframe-transport.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.inputmask.min.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.mousewheel.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.sparkline.min.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.validate.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.vmap.min.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery.vmap.world.js'
+    'bundles/piwicmsadminweb/js/se7en/jquery_ujs.js'
+    'bundles/piwicmsadminweb/js/se7en/morris.min.js'
+    'bundles/piwicmsadminweb/js/se7en/prettify.js'
+    'bundles/piwicmsadminweb/js/se7en/raphael.min.js'
+    'bundles/piwicmsadminweb/js/se7en/respond.js'
+    'bundles/piwicmsadminweb/js/se7en/select2.js'
+    'bundles/piwicmsadminweb/js/se7en/selectivizr-min.js'
+    'bundles/piwicmsadminweb/js/se7en/skycons.js'
+    'bundles/piwicmsadminweb/js/se7en/styleswitcher.js'
+    'bundles/piwicmsadminweb/js/se7en/summernote.min.js'
+    'bundles/piwicmsadminweb/js/se7en/typeahead.js'
+
+    'bundles/piwicmsadminweb/js/sugarjs/sugar.min.js'
+    'bundles/piwicmsadminweb/js/blockui/blockui.js'
+    'bundles/piwicmsadminweb/js/bootbox/bootbox.min.js'
+    'bundles/piwicmsadminweb/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js'
+    'bundles/piwicmsadminweb/js/application.js'
+
+    'bundles/piwicmssystemcore/js/ajax.js'
+    'bundles/piwicmssystemcore/highcharts/js/highcharts.js'
+    'bundles/piwicmssystemcore/highcharts/js/modules/exporting.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("body").bind({
+                ajaxStart: function() {
+                    $(this).addClass("loading");
+                },
+                ajaxStop: function() {
+                    $(this).removeClass("loading");
+                }
+            });
+        });
+    </script>
+    {{ elfinder_tinymce_init4() }}
+    {{ tinymce_init() }}
+{% endblock %}
+
+</body>
+</html>

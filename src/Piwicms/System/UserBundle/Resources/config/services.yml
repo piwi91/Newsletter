@@ -24,3 +24,9 @@ services:
         arguments: [@doctrine.orm.entity_manager]
         tags:
             - { name: kernel.event_subscriber }
+
+#    piwicms.user.logged_in_user_listener:
+#        class: Piwicms\System\UserBundle\EventListener\LoggedInUserListener
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+#        arguments: [ @router, @service_container ]
