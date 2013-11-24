@@ -18,9 +18,9 @@
                             <li>
                                 <a href="#">
                                     {% if task.unread %}
-                                    <div class="notifications label label-info">
-                                        New
-                                    </div>
+                                        <div class="notifications label label-info">
+                                            New
+                                        </div>
                                     {% endif %}
                                     {{ task.title }}
                                 </a>
@@ -54,28 +54,28 @@
                     </ul>
                 </li>
                 {% if is_granted('ROLE_ADMIN') %}
-                <li class="dropdown settings hidden-xs">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span aria-hidden="true" class="se7en-gear"></span>
-                        <div class="sr-only">
-                            Settings
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('piwicms_admin_user_index') }}">{{ "base.system.users"|trans }}</a></li>
-                        <li><a href="{{ path('piwicms_admin_group_index') }}">{{ "base.system.groups"|trans }}</a></li>
-                        <li><a href="{{ path('piwicms_admin_view_index') }}">{{ "base.system.templates"|trans }}</a></li>
-                        <li><a href="#">{{ "base.system.import"|trans }}</a></li>
-                        <li><a href="#">{{ "base.system.export"|trans }}</a></li>
-                        <li><a href="#">{{ "base.system.log"|trans }}</a></li>
-                        <li><a href="#">{{ "base.system.statistics"|trans }}</a></li>
-                        <li><a href="{{ path('piwicms_system_settings_edit') }}">{{ "base.system.settings"|trans }}</a></li>
-                        <li><a href="#">{{ "base.system.acl"|trans }}</a></li>
-                        <li><a href="{{ path('supervisor') }}">{{ "base.system.supervisor"|trans }}</a></li>
-                    </ul>
-                </li>
+                    <li class="dropdown settings hidden-xs">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span aria-hidden="true" class="se7en-gear"></span>
+                            <div class="sr-only">
+                                Settings
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('piwicms_admin_user_index') }}">{{ "base.system.users"|trans }}</a></li>
+                            <li><a href="{{ path('piwicms_admin_group_index') }}">{{ "base.system.groups"|trans }}</a></li>
+                            <li><a href="{{ path('piwicms_admin_view_index') }}">{{ "base.system.templates"|trans }}</a></li>
+                            <li><a href="#">{{ "base.system.import"|trans }}</a></li>
+                            <li><a href="#">{{ "base.system.export"|trans }}</a></li>
+                            <li><a href="#">{{ "base.system.log"|trans }}</a></li>
+                            <li><a href="#">{{ "base.system.statistics"|trans }}</a></li>
+                            <li><a href="{{ path('piwicms_system_settings_edit') }}">{{ "base.system.settings"|trans }}</a></li>
+                            <li><a href="#">{{ "base.system.acl"|trans }}</a></li>
+                            <li><a href="{{ path('supervisor') }}">{{ "base.system.supervisor"|trans }}</a></li>
+                        </ul>
+                    </li>
                 {% endif %}
                 <li class="dropdown user hidden-xs"><a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    {#<img width="34" height="34" src="images/avatar-male.jpg" />#}{{ app.user.username }}<b class="caret"></b></a>
+                        {#<img width="34" height="34" src="images/avatar-male.jpg" />#}{{ app.user.username }}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('fos_user_profile_edit') }}"><i class="icon-user"></i> {{ "base.user_profile"|trans }}</a></li>
                         <li><a href="{{ path('piwicms_user_settings_edit') }}"><i class="icon-gear"></i> {{ "base.user_settings"|trans }}</a></li>
@@ -88,17 +88,17 @@
         </div>
         <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="/">Piwi-Web</a>
         {#<form class="navbar-form form-inline col-lg-2 hidden-xs">#}
-            {#<input class="form-control" placeholder="Search" type="text">#}
+        {#<input class="form-control" placeholder="Search" type="text">#}
         {#</form>#}
     </div>
     <div class="container-fluid main-nav clearfix">
         <div class="nav-collapse">
             <ul class="nav">
                 <li class="dashboard">
-                    <a class="current" href="/"><span aria-hidden="true" class="se7en-home"></span>Dashboard</a>
+                    <a class="current" href="{{ path('piwicms_admin_dashboard_index') }}"><span aria-hidden="true" class="se7en-home"></span>Dashboard</a>
                 </li>
                 <li class="dropdown">
-                    <a data-toggle="dropdown" href="#"><span aria-hidden="true" class="se7en-feed"></span> {{ "base.cms"|trans }} <b class="caret"></b></a>
+                    <a data-toggle="dropdown" href="#"><span aria-hidden="true" class="se7en-feed"></span> {{ "base.cms.title"|trans }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('piwicms_admin_mailinglist_index') }}">{{ "base.cms.mailinglist"|trans }}</a></li>
                         <li><a href="{{ path('piwicms_admin_newsletter_index') }}">{{ "base.cms.newsletter"|trans }}</a></li>

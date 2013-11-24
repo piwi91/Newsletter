@@ -1,0 +1,23 @@
+base:
+    my_profile: Mijn profiel
+    user_profile: Gebruikersprofiel
+    user_settings: Gebruikersinstellingen
+    tasks: Taken
+    private_messages: Persoonlijke berichten
+    logout: Uitloggen
+    cms:
+        title: Contentbeheer
+        templates: Templates
+        newsletter: Nieuwsbrief
+        mailinglist: Mailinglijst
+    system:
+        users: Gebruikers
+        groups: Groepen
+        import: Import
+        export: Export
+        log: Log
+        statistics: Statistieken
+        settings: Instellingen
+        acl: Toegangslijsten
+        supervisor: Supervisor
+        templates: Templates

@@ -1,3 +1,7 @@
+piwicms_admin_dashboard:
+    resource: "@PiwicmsAdminDashboardBundle/Resources/config/routing.yml"
+    prefix:   /admin/dashboard
+
 piwicms_admin_web:
     resource: "@PiwicmsAdminWebBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,3 @@
+piwicms_admin_dashboard_index:
+    pattern:  /
+    defaults: { _controller: PiwicmsAdminDashboardBundle:Dashboard:index }

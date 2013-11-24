@@ -1,0 +1,23 @@
+base:
+    my_profile: My profile
+    user_profile: User profile
+    user_settings: User settings
+    tasks: Tasks
+    private_messages: Private messages
+    logout: Log out
+    cms:
+        title: Content management system
+        templates: Templates
+        newsletter: Newsletter
+        mailinglist: Mailing list
+    system:
+        users: Users
+        groups: Groups
+        import: Import
+        export: Export
+        log: Log
+        statistics: Statistics
+        settings: Settings
+        acl: Access control lists
+        supervisor: Supervisor
+        templates: Templates

@@ -1,0 +1,16 @@
+{% extends 'PiwicmsAdminWebBundle::base.html.twig' %}
+
+{% block title %}{{ parent() }} User{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '@PiwicmsAdminDashboardBundle/Resources/public/js/Dashboard/index.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}

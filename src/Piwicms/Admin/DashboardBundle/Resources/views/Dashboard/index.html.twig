@@ -1,0 +1,38 @@
+{% extends "PiwicmsAdminDashboardBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '../src/Piwicms/Admin/ViewBundle/Resources/public/js/viewList.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function(){
+            $(document).dashboardIndex({
+                chart01: $('#chart01'),
+                chart02: $('#chart02'),
+                chart03: $('#chart03')
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="widget-container">
+                        <div class="heading">
+                            {{ 'dashboardbundle.dashboard.index.title'|trans }}
+                        </div>
+                        <div class="widget-content padded clearfix">
+                            <div id="chart01"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

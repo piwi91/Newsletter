@@ -1,0 +1,4 @@
+dashboardbundle:
+    dashboard:
+        index:
+            title: Dashboard
