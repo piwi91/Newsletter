@@ -15,12 +15,6 @@ class ViewType extends AbstractType
             ->add('name', 'text', array(
                 'required' => true
             ))
-            ->add('type', 'choice', array(
-                'choices' => array(
-                    'template' => 'Template',
-                    'page' => 'Page'
-                )
-            ))
             ->add('module', 'choice', array(
                 'choices' => array(
                     'email' => 'E-mail',
@@ -28,30 +22,9 @@ class ViewType extends AbstractType
                 ),
                 'required' => true
             ))
-            ->add('view', 'textarea', array(
-                'attr' => array('class' => 'big'),
+            ->add('view', 'wysiwyg', array(
+                'attr' => array('class' => 'tinymce big'),
                 'required' => true
-            ))
-            ->add('viewBlock', 'collection', array(
-                'type' => new BlocksType(),
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-                'options' => array (
-                    'attr' => array (
-                        'class' => 'viewblock'
-                    ),
-                    'label' => false,
-                    'widget_remove_btn' => array(
-                        'label' => "remove this",
-                        "icon" => "pencil",
-                        'attr' => array('class' => 'btn btn-danger')
-                    ),
-                ),
-                'widget_add_btn' => array(
-                    'icon' => 'plus',
-                    'label' => 'add'
-                )
             ));
     }
 

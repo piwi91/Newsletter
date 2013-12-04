@@ -1,0 +1,22 @@
+client:
+    newsletterbundle:
+        newsletter:
+            subscribe: Schrijf in
+            unsubscribe: Schrijf uit
+        form:
+            firstname: Voornaam
+            surname: Achternaam
+            emailaddress: E-mailadres
+            mailinglist: Mailinglijsten
+            submit_subscribe: Schrijf in
+            submit_unsubscribe: Schrijf uit
+            subscribe:
+                add_title: Schrijf in voor de nieuwsbrief
+                edit_title: Wijzig inschrijving
+                success: Bedankt voor je aanmelding
+                error: Er is iets fout gegaan :-(
+                already_exists: Dit e-mailadres is reeds ingeschreven voor de nieuwsbrief
+            unsubscribe:
+                success: Je bent uitgeschreven
+                error: Er is iets fout gegaan :-(
+                no_user_found: Inschrijving niet gevonden

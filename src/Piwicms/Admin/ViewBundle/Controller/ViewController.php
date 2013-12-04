@@ -71,34 +71,11 @@ class ViewController extends Controller
             throw $this->createNotFoundException('Unable to find View entity.');
         }
 
-        $originalBlocks = array();
-        foreach ($entity->getViewBlock() as $block) {
-            $originalBlocks[] = $block;
-        }
-
         $form = $this->createForm(new ViewType(), $entity);
 
         if($request->isMethod('PUT')){
             $form->submit($request);
             if($form->isValid()){
-                // filter $originalTags to contain tags no longer present
-                foreach ($entity->getViewBlock() as $block) {
-                    foreach ($originalBlocks as $key => $toDel) {
-                        if ($toDel->getId() === $block->getId()) {
-                            unset($originalBlocks[$key]);
-                        }
-                    }
-                }
-                // remove the relationship between the tag and the Task
-                foreach ($originalBlocks as $block) {
-                    // remove the Task from the Tag
-                    $block->setView(null);
-                    // if it were a ManyToOne relationship, remove the relationship like this
-                    // $tag->setTask(null);
-                    $em->remove($block);
-                    // if you wanted to delete the Tag entirely, you can also do that
-                    // $em->remove($tag);
-                }
                 $em->persist($entity);
                 $em->flush();
 

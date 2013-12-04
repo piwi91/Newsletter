@@ -45,9 +45,9 @@ class MailingStatistic
     /**
      * @var Mailing
      *
-     * @ORM\ManyToOne(targetEntity="Mailing")
+     * @ORM\ManyToOne(targetEntity="Mailing", cascade={"remove"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="mailing_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="mailing_id", referencedColumnName="id", onDelete="CASCADE")
      * })
      */
     private $mailing;

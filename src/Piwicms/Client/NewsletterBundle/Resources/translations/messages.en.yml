@@ -1,8 +1,8 @@
 client:
     newsletterbundle:
         newsletter:
-            subscribe:
-            unsubscribe:
+            subscribe: Subscribe
+            unsubscribe: Unsubsribe
         form:
             firstname: Firstname
             surname: Surname

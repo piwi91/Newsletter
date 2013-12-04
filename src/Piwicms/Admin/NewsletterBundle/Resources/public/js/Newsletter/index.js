@@ -120,10 +120,6 @@ $(function() {
             });
 
             this._on(this.document, {
-                'click.editnewsletter': function(event) {
-                    event.preventDefault();
-                    alert('This button isn\'t yet available');
-                },
                 'click.deletenewsletter': function(event) {
                     event.preventDefault();
                     var location = $(event.currentTarget).attr('href');

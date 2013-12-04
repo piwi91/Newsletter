@@ -10,9 +10,7 @@
     {% endjavascripts %}
     <script>
         $(document).ready(function(){
-            $(document).newsletterStep2({
-                template: {{ template }}
-            });
+//            $(document).newsletterStep2();
         });
     </script>
 {% endblock %}
@@ -21,29 +19,17 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
-                <div class="col-lg-6" id="newsletter">
+                <div class="col-lg-10 col-lg-offset-1" id="newsletter">
                     <div class="widget-container">
                         <div class="heading">
                             {{ 'newsletterbundle.newsletter.step2.title'|trans }}
                         </div>
                         <div class="widget-content padded clearfix">
-                            <form action="{{ path('piwicms_admin_newsletter_step3') }}" {{ form_enctype(form) }} method="POST" id="newsletterForm">
-                                {{ form_widget(form) }}
-                                <input class="btn" type="submit" value="{{ 'next'|trans }}" />
+                            <form action="{{ path('piwicms_admin_newsletter_submit') }}" {{ form_enctype(form) }} method="POST" id="newsletterForm">
+                                {{ form_widget(form.text) }}
+                                {{ form_rest(form) }}
+                                <input class="btn btn-default" type="submit" value="{{ 'submit'|trans }}" />
                             </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="widget-container">
-                        <div class="heading">
-                            {{ 'newsletterbundle.newsletter.step2.example'|trans }}
-                            <div class="pull-right">
-                                <button class="btn btn-default" id="renderExample">Render example</button>
-                            </div>
-                        </div>
-                        <div class="widget-content padded clearfix" id="example">
-
                         </div>
                     </div>
                 </div>

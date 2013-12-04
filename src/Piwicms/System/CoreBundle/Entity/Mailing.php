@@ -72,6 +72,13 @@ class Mailing
     private $count = 0;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text")
+     */
+    private $text;
+
+    /**
      * @var View
      *
      * @ORM\ManyToOne(targetEntity="View")
@@ -84,25 +91,17 @@ class Mailing
     /**
      * @var MailingList
      *
-     * @ORM\ManyToMany(targetEntity="MailingList")
+     * @ORM\ManyToMany(targetEntity="MailingList", cascade={"persist","remove"})
      * @ORM\JoinTable(name="mailing_mailinglist",
-     *   joinColumns={@ORM\JoinColumn(name="mailing_id", referencedColumnName="id")},
-     *   inverseJoinColumns={@ORM\JoinColumn(name="mailinglist_id", referencedColumnName="id")}
+     *   joinColumns={@ORM\JoinColumn(name="mailing_id", referencedColumnName="id", onDelete="CASCADE")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="mailinglist_id", referencedColumnName="id", onDelete="CASCADE")}
      * )
      */
     private $mailingList;
 
-    /**
-     * @var MailingBlock
-     *
-     * @ORM\OneToMany(targetEntity="MailingBlock", mappedBy="mailing", cascade={"persist", "remove"})
-     */
-    private $mailingBlock;
-
     public function __construct()
     {
         $this->mailingList = new ArrayCollection();
-        $this->mailingBlock = new ArrayCollection();
     }
 
     /**
@@ -242,22 +241,6 @@ class Mailing
     }
 
     /**
-     * @param \Piwicms\System\CoreBundle\Entity\MailingBlock $mailingBlock
-     */
-    public function setMailingBlock($mailingBlock)
-    {
-        $this->mailingBlock = $mailingBlock;
-    }
-
-    /**
-     * @return \Piwicms\System\CoreBundle\Entity\MailingBlock
-     */
-    public function getMailingBlock()
-    {
-        return $this->mailingBlock;
-    }
-
-    /**
      * @return mixed
      */
     public function getSlug()
@@ -287,5 +270,21 @@ class Mailing
     public function setCount($count)
     {
         $this->count = $count;
+    }
+
+    /**
+     * @param string $text
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+    /**
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
     }
 }

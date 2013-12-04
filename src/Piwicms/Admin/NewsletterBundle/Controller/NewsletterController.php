@@ -5,13 +5,11 @@ namespace Piwicms\Admin\NewsletterBundle\Controller;
 use Piwicms\System\CoreBundle\Entity\Mailing;
 use Piwicms\System\CoreBundle\Entity\MailingList;
 use Piwicms\System\CoreBundle\Entity\MailingUser;
-use Piwicms\System\CoreBundle\Entity\MailingBlock;
-use Piwicms\System\CoreBundle\Entity\Newsletter;
+use Piwicms\System\CoreBundle\Entity\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Piwicms\Admin\NewsletterBundle\Form\NewsletterStep1Type;
 use Piwicms\Admin\NewsletterBundle\Form\NewsletterStep2Type;
-use Piwicms\Admin\NewsletterBundle\Form\NewsletterStep3Type;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -65,6 +63,12 @@ class NewsletterController extends BaseController
         $mailing = $em->getRepository('PiwicmsSystemCoreBundle:Mailing')
             ->find($id);
         $totalSend = $mailing->getCount();
+
+        $chart02Serie1 = array();
+        $chart02Serie2 = array();
+        $chart03Serie = array();
+        $chart02Categories = array();
+        $_clickedUrlByDate = array();
 
         foreach ($clickedUrlByDate as $row) {
             $_clickedUrlByDate[$row['date']] = $row['amount'];
@@ -195,9 +199,22 @@ class NewsletterController extends BaseController
         return $ajaxResponse->sendResponse();
     }
 
-    public function step1Action()
+    public function step1Action(Request $request)
     {
-        $form = $this->createForm(new NewsletterStep1Type());
+        $em = $this->getDoctrine()->getManager();
+
+        if ($id = $request->get('id')) {
+            $newsletterEntity = $em->getRepository('PiwicmsSystemCoreBundle:Mailing')->find($id);
+        }
+        if (isset($newsletterEntity)) {
+            $session = $this->getRequest()->getSession();
+            $session->set('mailingId', $id);
+        } else {
+            $session = $this->getRequest()->getSession();
+            $session->remove('mailingId');
+            $newsletterEntity = new Mailing();
+        }
+        $form = $this->createForm(new NewsletterStep1Type(), $newsletterEntity);
         return $this->render(
             'PiwicmsAdminNewsletterBundle:Newsletter:step1.html.twig',
             array(
@@ -208,40 +225,70 @@ class NewsletterController extends BaseController
 
     public function step2Action(Request $request)
     {
+        if (!$request->isMethod('POST')) {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                'No data received - Step2'
+            );
+            return $this->redirect($this->generateUrl('piwicms_admin_newsletter_index'));
+        }
+        $em = $this->getDoctrine()->getManager();
+
         $formData = $request->get('piwicms_newsletter_step1');
-        $title = $formData['title'];
-        $template = $formData['template'];
-        $mailingList = $formData['mailinglist'];
 
         $session = $this->getRequest()->getSession();
-        $session->set('title', $title);
-        $session->set('template', $template);
-        $session->set('mailingList', $mailingList);
+        $session->set('title', $formData['title']);
+        $session->set('template', $formData['template']);
+        $session->set('mailingList', $formData['mailinglist']);
 
-        $blocks = $this->getDoctrine()->getRepository('PiwicmsSystemCoreBundle:ViewBlock')->findBy(
-            array (
-                'view' => $template
+        $id = $session->get('mailingId');
+        if ($id) {
+            /** @var $newsletterEntity Mailing */
+            $newsletterEntity = $em->getRepository('PiwicmsSystemCoreBundle:Mailing')->find($id);
+            if ($newsletterEntity) {
+                if ($newsletterEntity->getTemplate()->getId() != $formData['template']) {
+                    $_template = $em->getRepository('PiwicmsSystemCoreBundle:View')->find($formData['template']);
+                    $template = $_template->getView();
+                } else {
+                    $template = $newsletterEntity->getText();
+                }
+            }
+        } else {
+            $newsletterEntity = new Mailing();
+            /** @var $_template View */
+            $_template = $em->getRepository('PiwicmsSystemCoreBundle:View')->find($formData['template']);
+            $template = $_template->getView();
+        }
+        $newsletterEntity->setText($template);
+
+        $form = $this->createForm(new NewsletterStep2Type(), $newsletterEntity, array (
+            'attr' => array (
+                'class' => 'form-vertical'
             )
-        );
-
-        $form = $this->createForm(new NewsletterStep2Type($blocks));
+        ));
         return $this->render(
             'PiwicmsAdminNewsletterBundle:Newsletter:step2.html.twig',
             array(
-                'form' => $form->createView(),
-                'blocks' => $blocks,
-                'template' => $template
+                'form' => $form->createView()
             )
         );
     }
 
-    public function step3Action(Request $request)
+    public function submitAction(Request $request)
     {
+        if (!$request->isMethod('POST')) {
+            $this->get('session')->getFlashBag()->add(
+                'warning',
+                'No data received - Submit'
+            );
+            return $this->redirect($this->generateUrl('piwicms_admin_newsletter_index'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->get('security.context')->getToken();
         if(!$user) {
-            throw \Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException();
+            throw new \Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException();
         }
 
         $session = $this->getRequest()->getSession();
@@ -249,26 +296,21 @@ class NewsletterController extends BaseController
         $template = $session->get('template');
         $mailingList = $session->get('mailingList');
 
-        $mailing = new Mailing();
+        $id = $session->get('mailingId');
+        if ($id) {
+            $mailing = $em->getRepository('PiwicmsSystemCoreBundle:Mailing')->find($id);
+        } else {
+            $mailing = new Mailing();
+        }
+
         $mailing->setTitle($title);
         $mailing->setDatetime(new \DateTime());
         $mailing->setStart(new \DateTime());
         $mailing->setCreatedBy($user->getUser()->getUsername());
 
         $formData = $request->get('piwicms_newsletter_step2');
+
         $template = $this->getDoctrine()->getRepository('PiwicmsSystemCoreBundle:View')->find($template);
-        $templateBlocks = $template->getViewBlock();
-        $index = 1;
-        while (isset($formData['mailingBlock_' . $index])) {
-            $blocks[] = $formData['mailingBlock_' . $index];
-            $twigBlocks[$templateBlocks[$index-1]->getName()] = $formData['mailingBlock_' . $index];
-            $mailingBlock = new MailingBlock();
-            $mailingBlock->setText($formData['mailingBlock_' . $index]);
-            $mailingBlock->setMailing($mailing);
-            $mailingBlock->setViewBlock($templateBlocks[$index-1]);
-            $mailingBlocks[] = $mailingBlock;
-            $index++;
-        }
 
         $countEmailaddressess = 0;
         if (is_array($mailingList)) {
@@ -283,86 +325,20 @@ class NewsletterController extends BaseController
             $countEmailaddressess += count($_mailingList->getMailingUser());
         }
 
+        $mailing->setStatus('Planned');
         $mailing->setMailingList($_mailingLists);
         $mailing->setTemplate($template);
-        $mailing->setMailingBlock($mailingBlocks);
+        $mailing->setText($formData['text']);
 
         $em->persist($mailing);
         $em->flush();
 
-        $renderedView = $this->renderMailing($template, $twigBlocks, $mailing->getId());
-
-        $session->set('mailingId', $mailing->getId());
-
-        $form = $this->createForm(new NewsletterStep3Type());
-        return $this->render(
-            'PiwicmsAdminNewsletterBundle:Newsletter:step3.html.twig',
-            array(
-                'form' => $form->createView(),
-                'mail' => $renderedView,
-                'mailing' => $mailing,
-                'countEmailaddress' => $countEmailaddressess
-            )
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            'Newsletter added and scheduled for sending!'
         );
-    }
-
-    public function submitAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $session = $this->getRequest()->getSession();
-        $mailingId = $session->get('mailingId');
-
-        /** @var $mailing Mailing */
-        $mailing = $this->getDoctrine()->getRepository('PiwicmsSystemCoreBundle:Mailing')->find($mailingId);
-
-        $form = $this->createForm(new NewsletterStep3Type(), $mailing);
-        if($request->isMethod('POST')){
-            $form->submit($request);
-            if($form->isValid()){
-                $mailing->setStatus('Planned');
-
-                $em->persist($mailing);
-                $em->flush();
-
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    'Newsletter added and scheduled for sending!'
-                );
-            }
-        } else {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                'Something went wrong! Please try it again.'
-            );
-        }
 
         return $this->redirect($this->generateUrl('piwicms_admin_newsletter_index'));
-    }
-
-    public function renderExampleAction(Request $request)
-    {
-        $template = $request->get('template');
-        $blocks = $request->get('blocks');
-
-        $em = $this->getDoctrine()->getManager();
-        /** @var $entity View */
-        $entity = $em->getRepository('PiwicmsSystemCoreBundle:View')->find($template);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find View entity.');
-        }
-
-        $twigBlocks = array();
-        foreach ($blocks as $block) {
-            $twigBlocks[$block['block']] = $block['html'];
-        }
-
-        $renderedView = $this->renderMailing($entity, $twigBlocks);
-
-        $serializer = $this->get('jms_serializer');
-        $serializedView = $serializer->serialize(array('view' => $renderedView, 'entity' => $entity), 'json');
-        return new Response($serializedView);
     }
 
     public function deleteAction($id)
@@ -391,10 +367,7 @@ class NewsletterController extends BaseController
         $em = $this->getDoctrine()->getManager();
         $mailing = $em->getRepository('PiwicmsSystemCoreBundle:Mailing')->find($id);
         if ($mailing) {
-            foreach ($mailing->getMailingBlock() as $block) {
-                $twigBlocks[$block->getViewBlock()->getName()] = $block->getText();
-            }
-            $renderedView = $this->renderMailing($mailing->getTemplate(), $twigBlocks, $mailing->getId());
+            $renderedView = $this->renderMailing($mailing->getText(), $mailing->getId());
         } else {
             $renderedView = "Oops... Something went wrong :-(";
         }
@@ -420,10 +393,6 @@ class NewsletterController extends BaseController
             return $this->redirect($this->generateUrl('piwicms_admin_newsletter_index'));
         }
 
-        foreach ($mailing->getMailingBlock() as $block) {
-            $twigBlocks[$block->getViewBlock()->getName()] = $block->getText();
-        }
-
         $_mailaddressSend = array();
 
         $countSend = $mailing->getCount();
@@ -437,7 +406,7 @@ class NewsletterController extends BaseController
                 $trackingId = $user->getId();
                 if (!in_array($emailaddress, $_mailaddressSend)) {
                     $_mailaddressSend[] = $emailaddress;
-                    $renderedView = $this->renderMailing($mailing->getTemplate(), $twigBlocks, $mailing->getId(), $trackingId);
+                    $renderedView = $this->renderMailing($mailing->getText(), $mailing->getId(), $trackingId);
                     $message = \Swift_Message::newInstance()
                         ->setSubject($mailing->getTitle())
                         ->setFrom($this->container->getParameter('piwicms.email.from.emailaddress'))
@@ -457,12 +426,12 @@ class NewsletterController extends BaseController
             'success',
             'E-mails scheduled for sending'
         );
+
         return $this->redirect($this->generateUrl('piwicms_admin_newsletter_index'));
     }
 
-    protected function renderMailing($template, $blocks, $mailingId = 0, $trackingId = 0)
+    protected function renderMailing($renderedView, $mailingId = 0, $trackingId = 0)
     {
-        $renderedView = $this->renderView($template->getName(), $blocks);
         // Check if there is a url in the text
         if(preg_match_all('/href="(http|https)\:\/\/([^"]+)"/', $renderedView, $matches)) {
             foreach ($matches[0] as $key => $match) {

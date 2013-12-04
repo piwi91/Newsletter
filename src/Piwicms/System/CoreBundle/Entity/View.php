@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * View
  *
- * @ORM\Table()
+ * @ORM\Table(name="view")
  * @ORM\Entity(repositoryClass="Piwicms\System\CoreBundle\Repository\ViewRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -47,13 +47,6 @@ class View
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
-     */
-    private $type = 'page';
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="createdBy", type="string", length=255)
      */
     private $createdBy;
@@ -71,18 +64,6 @@ class View
      * @ORM\Column(name="modified", type="datetime")
      */
     private $modified;
-
-    /**
-     * @var ViewBlock
-     *
-     * @ORM\OneToMany(targetEntity="ViewBlock", mappedBy="view", cascade={"persist", "remove", "merge"})
-     */
-    private $viewBlock;
-
-    function __construct()
-    {
-        $this->viewBlock = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -164,29 +145,6 @@ class View
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     * @return View
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set createdBy
      *
      * @param string $createdBy
@@ -256,41 +214,5 @@ class View
     public function getModified()
     {
         return $this->modified;
-    }
-
-    /**
-     * @param \Piwicms\System\CoreBundle\Entity\ViewBlock $viewBlock
-     */
-    public function setViewBlock($viewBlock)
-    {
-        $this->viewBlock = $viewBlock;
-    }
-
-    /**
-     * @return \Piwicms\System\CoreBundle\Entity\ViewBlock
-     */
-    public function getViewBlock()
-    {
-        return $this->viewBlock;
-    }
-
-    /**
-     * @param $viewBlock
-     */
-    public function addViewBlock(ViewBlock $viewBlock)
-    {
-        $this->viewBlock[] = $viewBlock;
-
-        $viewBlock->setView($this);
-
-        return $this;
-    }
-
-    /**
-     * @param $viewBlock
-     */
-    public function removeViewBlock($viewBlock)
-    {
-        $this->viewBlock->removeElement($viewBlock);
     }
 }
