@@ -163,6 +163,10 @@ stfalcon_tinymce:
                  removed_menuitems: 'newdocument'
                  image_advtab: true
                  file_browser_callback : elFinderBrowser
+                 convert_urls: false
+#                 relative_urls: true
+#                 document_base_url: %piwicms.base_url%
+#                 remove_script_host: false
 
 fm_elfinder:
     locale: %locale%
