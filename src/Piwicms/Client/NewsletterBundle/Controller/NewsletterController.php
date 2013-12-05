@@ -76,6 +76,7 @@ class NewsletterController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $mailingUser = null;
         if ($request->isMethod('POST')) {
             $formData = $request->get('unsubscribe');
             $mailingUser = $em->getRepository('PiwicmsSystemCoreBundle:MailingUser')->findOneByEmailaddress($formData['emailaddress']);
