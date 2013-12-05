@@ -146,11 +146,29 @@ class MailingUser
         $this->mailingList = $mailingList;
     }
 
+    public function addMailingList($mailingList)
+    {
+        $this->mailingList[] = $mailingList;
+    }
+
+    public function removeMailingList($mailingList)
+    {
+        $this->mailingList->removeElement($mailingList);
+    }
+
     /**
      * @return \Piwicms\System\CoreBundle\Entity\MailingList
      */
     public function getMailingList()
     {
         return $this->mailingList;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->firstname . " " . $this->surname . " (" . $this->emailaddress . ")";
     }
 }

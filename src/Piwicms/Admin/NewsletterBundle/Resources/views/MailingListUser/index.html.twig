@@ -13,20 +13,21 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-    '../src/Piwicms/Admin/NewsletterBundle/Resources/public/js/MailingList/index.js'
+    '../src/Piwicms/Admin/NewsletterBundle/Resources/public/js/MailingListUser/index.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
         $(document).ready(function(){
             $(document).mailingListIndex({
+                id: '{{ id }}',
                 dataTable: $('#table'),
                 dataTableContainer: $('#tableContainer'),
                 // Routing
-                ajaxDatatableRoute: 'piwicms_admin_mailinglist_indexDatatable',
-                editMailingListRoute: 'piwicms_admin_mailinglist_edit',
-                deleteMailingListRoute: 'piwicms_admin_mailinglist_delete',
-                showMailingListRoute: 'piwicms_admin_mailinglist_users_index',
+                ajaxDatatableRoute: 'piwicms_admin_mailinglist_users_indexDatatable',
+                editMailingListUserRoute: 'piwicms_admin_mailinglist_users_edit',
+                deleteMailingListUserRoute: 'piwicms_admin_mailinglist_users_delete',
+                showMailingListUserRoute: 'piwicms_admin_mailinglist_users_show',
                 // Translations
                 editTrans: '{{ 'edit'|trans }}'
             });
@@ -39,14 +40,21 @@
         <div class="col-lg-12">
             <div class="widget-container">
                 <div class="heading">
-                    <i class="icon-list"></i>{{ 'newsletterbundle.mailinglist.index.title'|trans }}
+                    <i class="icon-list"></i>{{ 'newsletterbundle.mailinglistuser.index.title'|trans }}
                 </div>
                 <div class="widget-content padded clearfix">
+                    <dl>
+                        <dt>{{ 'newsletterbundle.mailinglist.show.subscribelink'|trans }}</dt>
+                        <dd><a href="{{ subscribeUrl }}" target="_blank">{{ subscribeUrl }}</a></dd>
+                        <dt>{{ 'newsletterbundle.mailinglist.show.unsubscribelink'|trans }}</dt>
+                        <dd><a href="{{ unsubscribeUrl }}" target="_blank">{{ unsubscribeUrl }}</a></dd>
+                    </dl>
                     <table class="table table-bordered table-striped" id="table">
                         <thead>
                         <tr>
-                            <th>id</th>
-                            <th>{{ 'newsletterbundle.mailinglist.index.table.name'|trans }}</th>
+                            <th>{{ 'newsletterbundle.mailinglistuser.index.table.firstname'|trans }}</th>
+                            <th>{{ 'newsletterbundle.mailinglistuser.index.table.surname'|trans }}</th>
+                            <th>{{ 'newsletterbundle.mailinglistuser.index.table.emailaddress'|trans }}</th>
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
@@ -55,7 +63,7 @@
                     </table>
                 </div>
                 <div class="widget-content padded clearfix">
-                    <p><a href="{{ path('piwicms_admin_mailinglist_new') }}" class="btn btn-default newMailingList">{{ 'new'|trans }}</a></p>
+                    <p><a href="{{ path('piwicms_admin_mailinglist_users_new', {id: id}) }}" class="btn btn-default newMailingListUser">{{ 'new'|trans }}</a></p>
                 </div>
             </div>
         </div>

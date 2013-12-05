@@ -1,0 +1,30 @@
+piwicms_admin_mailinglist_users_indexDatatable:
+    pattern:  /ajax/{id}/indexDatatable.{_format}
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:MailingListUser:indexDatatable" }
+    requirements:
+        _method: get
+        _format: json
+    options:
+        expose: true
+
+piwicms_admin_mailinglist_users_index:
+    pattern:  /{id}
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:MailingListUser:index" }
+    options:
+        expose: true
+
+piwicms_admin_mailinglist_users_new:
+    pattern:  /ajax/{id}/newmodal
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:MailingListUser:newModal" }
+    options:
+        expose: true
+
+piwicms_admin_mailinglist_users_submit:
+    pattern:  /submit
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:MailingListUser:submit" }
+
+piwicms_admin_mailinglist_users_delete:
+    pattern:  /{mailingListId}/{id}/delete
+    defaults: { _controller: "PiwicmsAdminNewsletterBundle:MailingListUser:delete" }
+    options:
+        expose: true

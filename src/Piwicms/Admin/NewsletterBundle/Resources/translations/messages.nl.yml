@@ -11,9 +11,7 @@ newsletterbundle:
         step2:
             title: Maak een nieuwe nieuwsbrief - Stap 2
             example: Nieuwsbrief voorbeeld
-        step3:
-            title: Maak een nieuwe nieuwsbrief - Laatste stap
-            example: Nieuwsbrief voorbeeld
+            explanation: Je kan placeholders gebruiken om de nieuwsbrief te personaliserne. Er zijn drie placeholders beschikbaar: <strong>%firstname%, %surname% en %emailaddress%</strong>.
 
     mailinglist:
         index:

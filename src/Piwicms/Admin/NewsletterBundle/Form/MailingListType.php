@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Doctrine\ORM\EntityRepository;
 
-class MailingListType extends AbstractType
+class MailingListUserTypeMailingListType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

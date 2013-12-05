@@ -5,3 +5,7 @@ piwicms_client_newsletter:
 piwicms_client_mailinglist:
     resource: "@PiwicmsAdminNewsletterBundle/Resources/config/routing/mailinglist.yml"
     prefix:   /mailinglist
+
+piwicms_client_mailinglist_users:
+    resource: "@PiwicmsAdminNewsletterBundle/Resources/config/routing/mailinglistuser.yml"
+    prefix:   /mailinglistuser

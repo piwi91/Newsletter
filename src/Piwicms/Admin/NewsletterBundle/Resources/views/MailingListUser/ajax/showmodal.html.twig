@@ -1,0 +1,26 @@
+{# Modal Body #}
+<!-- Modal -->
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">{{ 'newsletterbundle.mailinglist.show.title'|trans }} {{ title }}</h4>
+        </div>
+        <div class="modal-body" style="overflow: scroll;">
+            <dl>
+                <dt>{{ 'newsletterbundle.mailinglist.show.subscribelink'|trans }}</dt>
+                <dd><a href="{{ subscribeUrl }}" target="_blank">{{ subscribeUrl }}</a></dd>
+                <dt>{{ 'newsletterbundle.mailinglist.show.unsubscribelink'|trans }}</dt>
+                <dd><a href="{{ unsubscribeUrl }}" target="_blank">{{ unsubscribeUrl }}</a></dd>
+            </dl>
+            <ul>
+                {% for row in mailingListUsers %}
+                    <li>{{ row.firstname }} {{ row.surname }}<br /><em>{{ row.emailaddress }}</em></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="modal-footer">
+        {#<button type="submit" class="btn btn-primary">Save changes</button>#}
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

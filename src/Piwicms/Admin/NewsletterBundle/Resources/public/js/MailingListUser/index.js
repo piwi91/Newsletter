@@ -2,13 +2,14 @@ $(function() {
     $.widget('piwicms.mailingListIndex', {
         // Default options
         options: {
+            id: null,
             dataTable: null,
             dataTableContainer: null,
             // Routing
             ajaxDatatableRoute: null,
-            editMailingListRoute: null,
-            deleteMailingListRoute: null,
-            showMailingListRoute: null,
+            editMailingListUserRoute: null,
+            deleteMailingListUserRoute: null,
+            showMailingListUserRoute: null,
             // Translations
             editTrans: 'Edit',
             deleteTrans: 'Delete'
@@ -34,7 +35,7 @@ $(function() {
             this._initDataTable();
 
             this._on(this.document, {
-                'click.newMailingList': function(event) {
+                'click.newMailingListUser': function(event) {
                     event.preventDefault();
                     var location = $(event.currentTarget).attr('href');
                     $(window).application('renderModal',
@@ -58,7 +59,7 @@ $(function() {
             this._dataTable = $(this.options.dataTable).dataTable({
                 "sPaginationType": "full_numbers",
                 "bServerSide": true,
-                "sAjaxSource":  Routing.generate(this.options.ajaxDatatableRoute, { _format: 'json' }),
+                "sAjaxSource":  Routing.generate(this.options.ajaxDatatableRoute, { _format: 'json', id: $this.options.id }),
 //                "bFilter": false,
 //                "bLengthChange": false,
                 "bProcessing": false,
@@ -66,22 +67,26 @@ $(function() {
                 "aoColumnDefs": [
                     {
                         aTargets: [0],
-                        mData: function(source, type, val) { return source.id; },
-                        bVisible: false,
-                        sName: 'id'
+                        mData: function(source, type, val) { return source.firstname; },
+                        sWidth: 'auto',
+                        sName: 'firstname'
                     },
                     {
                         aTargets: [1],
-                        mData: function(source, type, val) { return source.name; },
+                        mData: function(source, type, val) { return source.surname; },
                         sWidth: 'auto',
-                        sName: 'name'
+                        sName: 'surname'
                     },
                     {
                         aTargets: [2],
+                        mData: function(source, type, val) { return source.emailaddress; },
+                        sWidth: 'auto',
+                        sName: 'emailaddress'
+                    },
+                    {
+                        aTargets: [3],
                         mData: function(source, type, val) {
-                            _return = '<a href="'+Routing.generate($this.options.editMailingListRoute, { 'id': source.id })+'" class="table-actions editMailingList"><i class="icon-pencil"></i></a> ';
-                            _return += '<a href="'+Routing.generate($this.options.deleteMailingListRoute, { 'id': source.id })+'" class="table-actions deleteMailingList"><i class="icon-trash"></i></a> ';
-                            _return += '<a href="'+Routing.generate($this.options.showMailingListRoute, { 'id': source.id })+'" class="table-actions showMailingList"><i class="icon-eye-open"></i></a> ';
+                            _return = '<a href="'+Routing.generate($this.options.deleteMailingListUserRoute, { 'mailingListId': $this.options.id, 'id': source.id })+'" class="table-actions deleteMailingListUser"><i class="icon-trash"></i></a> ';
                             return _return;
                         },
                         sWidth: '200px',
@@ -114,17 +119,7 @@ $(function() {
             });
 
             this._on(this.document, {
-                'click.editMailingList': function(event) {
-                    event.preventDefault();
-                    var location = $(event.currentTarget).attr('href');
-                    $(window).application('renderModal',
-                        '#',
-                        location,
-                        'editModal',
-                        'Loading mailinglist'
-                    );
-                },
-                'click.deleteMailingList': function(event) {
+                'click.deleteMailingListUser': function(event) {
                     event.preventDefault();
                     var location = $(event.currentTarget).attr('href');
                     bootbox.confirm("Are you sure?", function(result) {

@@ -366,8 +366,12 @@ class NewsletterController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
         $mailing = $em->getRepository('PiwicmsSystemCoreBundle:Mailing')->find($id);
+        $mailingUser = new MailingUser();
+        $mailingUser->setFirstname('John');
+        $mailingUser->setSurname('Doe');
+        $mailingUser->setEmailaddress('john@doe.com');
         if ($mailing) {
-            $renderedView = $this->renderMailing($mailing->getText(), $mailing->getId());
+            $renderedView = $this->renderMailing($mailing->getText(), $mailingUser, $mailing->getId());
         } else {
             $renderedView = "Oops... Something went wrong :-(";
         }
@@ -406,7 +410,7 @@ class NewsletterController extends BaseController
                 $trackingId = $user->getId();
                 if (!in_array($emailaddress, $_mailaddressSend)) {
                     $_mailaddressSend[] = $emailaddress;
-                    $renderedView = $this->renderMailing($mailing->getText(), $mailing->getId(), $trackingId);
+                    $renderedView = $this->renderMailing($mailing->getText(), $user, $mailing->getId(), $trackingId);
                     $message = \Swift_Message::newInstance()
                         ->setSubject($mailing->getTitle())
                         ->setFrom($this->container->getParameter('piwicms.email.from.emailaddress'))
@@ -430,8 +434,11 @@ class NewsletterController extends BaseController
         return $this->redirect($this->generateUrl('piwicms_admin_newsletter_index'));
     }
 
-    protected function renderMailing($renderedView, $mailingId = 0, $trackingId = 0)
+    protected function renderMailing($renderedView, MailingUser $user, $mailingId = 0, $trackingId = 0)
     {
+        $search = array('%firstname%', '%surname%', '%emailaddress%');
+        $replace = array($user->getFirstname(), $user->getSurname(), $user->getEmailaddress());
+        $renderedView    = str_replace($search, $replace, $renderedView);
         // Check if there is a url in the text
         if(preg_match_all('/href="(http|https)\:\/\/([^"]+)"/', $renderedView, $matches)) {
             foreach ($matches[0] as $key => $match) {

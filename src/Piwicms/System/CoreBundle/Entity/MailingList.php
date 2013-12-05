@@ -32,7 +32,7 @@ class MailingList
     /**
      * @var MailingUser
      *
-     * @ORM\MAnyToMany(targetEntity="MailingUser", mappedBy="mailingList")
+     * @ORM\ManyToMany(targetEntity="MailingUser", mappedBy="mailingList")
      */
     private $mailingUser;
 

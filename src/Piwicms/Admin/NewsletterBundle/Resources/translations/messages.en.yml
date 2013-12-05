@@ -11,9 +11,7 @@ newsletterbundle:
         step2:
             title: Creating a new newsletter - Step 2
             example: Newsletter example
-        step3:
-            title: Creating a new newsletter - Final step
-            example: Newsletter example
+            explanation: You can use placeholders to personalize you're mailings. There are three placeholders: <strong>%firstname%, %surname% and %emailaddress%</strong>.
 
     mailinglist:
         index:

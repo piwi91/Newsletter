@@ -25,6 +25,7 @@
                             {{ 'newsletterbundle.newsletter.step2.title'|trans }}
                         </div>
                         <div class="widget-content padded clearfix">
+                            <p>{{ 'newsletterbundle.newsletter.step2.explanation'|trans|raw }}</p>
                             <form action="{{ path('piwicms_admin_newsletter_submit') }}" {{ form_enctype(form) }} method="POST" id="newsletterForm">
                                 {{ form_widget(form.text) }}
                                 {{ form_rest(form) }}
